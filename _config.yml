@@ -1,9 +1,9 @@
 permalink: /blog/:title
 sakura-jekyll-version: 0.9.0
 # Information required for feed
-title: Sakura Jekyll # Change this to your site name.
-description:
-url:
+title: Mitesh Shah # Change this to your site name.
+description: I'm Mitesh Shah! This is my personal website. I love computers and programming.
+url: http://miteshshah.com
 author:
 
 date_format: "%b %d, %Y"
@@ -27,16 +27,16 @@ twitter:
 # Includes an icon in the 'ABOUT' page for each username you enter
 footer-links:
   dribbble:
-  email:
+  email: mitesh@miteshshah.com
   facebook:
   flickr:
-  github:
+  github: miteshninja
   instagram:
-  linkedin:
+  linkedin: mitesh-shah
   pinterest:
   rss: True # just type anything here for a working RSS icon
-  twitter:
-  stackoverflow: # your stackoverflow profile, e.g. "users/50476/bart-kiers"
+  twitter: miteshninja
+  stackoverflow: users/4395646/miteshninja # your stackoverflow profile, e.g. "users/50476/bart-kiers"
   youtube: # channel/<your_long_string> or user/<user-name>
   googleplus: # anything in your profile username that comes after plus.google.com/
 
