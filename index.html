@@ -1,27 +1,108 @@
 ---
-layout: default
+layout: null
 ---
+<!DOCTYPE html>
+<!-- ---------------------------------------------------------
+"pshtt another template portfolio"...
+This is what you must be thinking. BUT DONT YOU DARE!
+because this page was handcrafted by my T.L.C.!
+-------------------------------------------------------------- -->
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Mitesh Shah website</title>
+    <meta name="Description" CONTENT="I'm Mitesh Shah! This is my personal website. I love computers and programming.">
+    <meta name="keywords" CONTENT="Mitesh,shah,programming,computer,developer,software,coder">
+    <meta name="author" CONTENT="Mitesh Shah">
+    <link href="{{ site.baseurl }}/favicon.ico" rel="shortcut icon" type="image/x-icon">
 
-{% assign post = site.posts.first %}
-<article id="post">
-    <header>
-        <h1>{{ post.title }}</h1>
-    </header>
-    {{ post.content }}
-    <footer>
-        <small><em>
-            <address>Posted by {{ site.author }}</address>
-            <time datetime="{{ post.date }}">{{ post.date | date: site.date_format }}</time>
-        </em></small>
-    </footer>
-</article>
-<aside>
-    <nav class="chrono">
-        {% for p in site.posts offset:1 limit:1 %}
-            {% if p %}
-        <a class="go-right sakura-fade no-border" href="{{p.url}}">{{p.title}} &raquo;</a>
-            {% endif %}
-        {% endfor %}
-    </nav>
-    <div style="clear: both;"></div>
-</aside>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='https://fonts.googleapis.com/css?family=Raleway:500' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/mitesh.css" media="screen" title="mitesh shah main.css" charset="utf-8">
+</head>
+<body>
+    <div class="container">
+        <div id="overlay" class="">
+            <!-- <div class="pad-wrap"> -->
+            <div class="right">
+                <a id="closeOverlay" href="#" class="btn"> X </a>
+            </div>
+
+                <div class="" id="aboutOverlay">
+                    <ul>
+                        <!-- Commented for the curious user :)
+                        ----------------------------------------
+                        <li>I like using the keyboard.</li>
+                        <li>A lot.</li>
+                        <li>I like creating and building things.</li>
+                        <li>I mostly use words and pictures to do that.</li>
+                        <li>Some of those words can be compiled by a computer.</li>
+                        <li>The rest can be understood by humans.</li> -->
+                        <li>I like to think, create, write, and ship.</li>
+                        <li>That's it.</li>
+                        <br>
+                        <ul id="profile">
+                            <li><a id="github"class="btn btn-light" alt="github link" href="https://github.com/miteshninja" target="_blank"><i class="fa fa-github-alt fa-lg" aria-hidden="true"></i></a></li>
+                            <li><a id="stackoverflow"class="btn btn-light" href="http://stackoverflow.com/users/4395646/miteshninja" alt="stackoverflow link" target="_blank"><i class="fa fa-stack-overflow fa-lg" aria-hidden="true"></i></a></li>
+                            <li><a id="linkedin"class="btn btn-light" href="https://www.linkedin.com/in/mitesh-shah" alt="linkedin link" target="_blank"><i class="fa fa-linkedin fa-lg" aria-hidden="true"></i>
+                            </a></li>
+                        </ul>
+                        <li><a id="email" class="btn btn-light" alt="my email address" href="mailto:mitesh@miteshshah.com" target="_blank">mitesh@miteshshah.com</a></li>
+                    </ul>
+                </div>
+                <!-- <div class="btm" id="btnOverlay">
+                </div> -->
+            <!-- </div> -->
+        </div>
+        <div class="box" id="box1">
+            <div class="pad-wrap">
+                <div class="right">
+                    <h1>Mitesh Shah</h1>
+                    <p>dream think make</p>
+                    <a id="about" class="btn" target="_blank">about</a>
+                    <!-- Hidden for the curious user :)  -->
+                    <a class="btn" href="http://miteshshah.com/blog" style="display:none" target="_blank">blog</a>
+                    <!-- ----------------------------------->
+                </div>
+            </div>
+        </div>
+        <div class="box" id="box2">
+            <div class="pad-wrap">
+                <div class="btm">
+                    <h1>Portfolio</h1>
+                    <p>previous work</p>
+                    <a href="http://miteshshah.com/portfolio" class="btn" target="_blank">get impressed</a>
+                </div>
+            </div>
+        </div>
+        <div class="box" id="box3">
+            <div class="pad-wrap">
+                <div class="right">
+                    <h1>Computable(verse);</h1>
+                    <p>tech blog</p>
+                    <a class="btn" href="http://computableverse.com" target="_blank">geek out</a>
+                </div>
+            </div>
+        </div>
+        <div class="box" id="box4">
+            <div class="pad-wrap">
+                <div class="btm">
+                    <h1>Earthly Humans</h1>
+                    <p>educational initiative</p>
+                    <a class="btn" href="https://earthlyhumans.com/about" target="_blank">know more</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <footer>
+        <ul>
+            #MySecretIdentity
+            <li class="block col-5"><a href="https://mitesh.ninja">mitesh.ninja</a></li>
+        </ul>
+    </footer> -->
+    <script   src="https://code.jquery.com/jquery-1.12.4.min.js"   integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="   crossorigin="anonymous"></script>
+    <script type="text/javascript" src="{{ site.baseurl }}/assets/js/mitesh.js"> </script>
+    <script src="https://use.fontawesome.com/3e382b95e3.js"></script>
+    {% include analytics.html %}
+</body>
+</html>
