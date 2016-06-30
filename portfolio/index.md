@@ -4,14 +4,19 @@ title:     Portfolio
 permalink: /portfolio/
 ---
 
-## Projects:
+## Current
 
-* List
-* Of
-* your
-* Projects
+- Final (4th) year Computer Science undergraduate student.
+- Technical writer at [Computable(verse);](http://computableverse.com/)
 
-## Work:
+## Past experiences:
 
-* List of
-* experiences
+* Full stack web developer/freelancer at Mahabali Innovative Technologies.
+
+## Side projects:
+
+* Ninshu - The Ninja Programming language.
+    [git repo](https://github.com/miteshninja/ninshu)
+* ghPublish - A complete command line blogging solution.
+    Create a blog and start writing in under 15 seconds!
+    [git repo](https://github.com/miteshninja/ghPublish)
