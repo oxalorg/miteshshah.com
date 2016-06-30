@@ -4,19 +4,12 @@ title:     about
 permalink: /about/
 ---
 
-This is your about page.
+* I love software, programming and computers.
+* link to my [portfolio]({{ site.baseurl }}/portfolio)
 
-Write stuff here like:
+Best way to contact me would be via email: <i class="sakura-blossom">mitesh</i>@<i class="sakura-fade">miteshshah.com</i>
 
-* ways to contact you
-* other social media accounts
-* link to your [portfolio]({{ site.baseurl }}/portfolio)
-
-To edit, add, delete icons below. Change _config.yml file in your repository:
-
-```
-https://github.com/<YOUR-USERNAME-HERE>/<YOUR-USERNAME-HERE>.github.io/tree/master/_config.yaml
-```
+My accounts at several places all over the internet:
 
 <link rel="stylesheet" href="{{ site.baseurl }}/assets/css/svg-icons.css">
 
