@@ -2,9 +2,10 @@ permalink: /blog/:title
 sakura-jekyll-version: 0.9.0
 # Information required for feed
 title: Mitesh Shah # Change this to your site name.
-description: I'm Mitesh Shah! This is my personal website. I love computers and programming.
-url: http://miteshshah.com
-author:
+description: "I'm Mitesh Shah! This is my personal website. I love computers and programming."
+brand_name: Mitesh Shah
+url: https://miteshshah.com
+author: Mitesh Shah
 
 date_format: "%b %d, %Y"
 
@@ -22,7 +23,7 @@ defaults:
 google_analytics:
 disqus_shortname:
 twitter:
-    username:
+    username: oxalorg
 
 # Includes an icon in the 'ABOUT' page for each username you enter
 footer-links:
@@ -30,13 +31,13 @@ footer-links:
   email: mitesh@miteshshah.com
   facebook:
   flickr:
-  github: miteshninja
-  instagram:
+  github: oxalorg
+  instagram: oxalorg
   linkedin: mitesh-shah
   pinterest:
   rss: # just type anything here for a working RSS icon
-  twitter: miteshninja
-  stackoverflow: users/4395646/miteshninja # your stackoverflow profile, e.g. "users/50476/bart-kiers"
+  twitter: oxalorg
+  stackoverflow: users/4395646/oxalorg # your stackoverflow profile, e.g. "users/50476/bart-kiers"
   youtube: # channel/<your_long_string> or user/<user-name>
   googleplus: # anything in your profile username that comes after plus.google.com/
 
