@@ -25,115 +25,179 @@
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
         Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     }
+    body {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+      display: grid;
+      grid-template-columns: 1fr 350px;
+      gap: 40px;
+      align-items: start;
+    }
+    .header-section {
+      grid-column: 1 / -1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    main {
+      grid-column: 1;
+    }
+    aside {
+      grid-column: 2;
+      position: sticky;
+      top: 20px;
+    }
+    .profile-img {
+      max-width: 150px;
+      border-radius: 100%;
+      margin-bottom: 0px;
+    }
+    h1 {
+      margin-bottom: 0;
+    }
+    .tagline {
+      margin-top: 10px;
+    }
+    @media (max-width: 768px) {
+      body {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      main {
+        grid-column: 1;
+      }
+      aside {
+        grid-column: 1;
+        position: static;
+      }
+      .header-section {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      blockquote {
+        grid-column: 1;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <h1>Mitesh Shah</h1>
-  <div style="float:right;padding-left:12px;">
-    <img style="max-width: 100px; border-radius: 100%; margin-bottom: 0px;" src="static/me2.png"
-      alt="Mitesh Shah Profile Picture">
-  </div>
-  <p>
-    I am a Computer programmer by day,
-    <a href="https://oxal.org">Intergalactic Rogue</a>
-    by night.
-  </p>
+  <main>
+    <h1>Mitesh Shah</h1>
+    <div style="float:right;padding-left:12px;">
+      <img style="max-width: 100px; border-radius: 100%; margin-bottom: 0px;" src="static/me2.png"
+	   alt="Mitesh Shah Profile Picture">
+    </div>
+    <p>
+      I am a Computer programmer by day,
+      <a href="https://oxal.org">Intergalactic Rogue</a>
+      by night.
+    </p>
 
-  <p>A full-stack developer, tech &amp; product consultant. I mainly work with
-  Clojure, ClojureScript, Reagent, Re-Frame, Postgresql, Terraform, Ansible,
-  Tailwind CSS, Python, Django, React, &amp; Amazon web services.</p>
+    <p>A full-stack developer, tech &amp; product consultant. I mainly work with
+      Clojure, ClojureScript, Reagent, Re-Frame, Postgresql, Terraform, Ansible,
+      Tailwind CSS, Python, Django, React, &amp; Amazon web services.</p>
 
-  <p>Please strike up a conversation with me on mastodon
-    <a href="https://fosstodon.org/@oxalorg">@oxalorg@fosstodon.org</a>
-    or via email <a href="mailto:mitesh@miteshshah.com">mitesh@miteshshah.com</a>
-    and I'd be happy to help!</p>
+    <p>Please strike up a conversation with me on mastodon
+      <a href="https://fosstodon.org/@oxalorg">@oxalorg@fosstodon.org</a>
+      or via email <a href="mailto:mitesh@miteshshah.com">mitesh@miteshshah.com</a>
+      and I'd be happy to help!</p>
 
-  <p>I am currently working with
-    <a href="https://gaiwan.co">Gaiwan GmbH</a>
-    as a technology consultant, helping them expand and
-    optimise their technology businesses.
-  </p>
+    <p>I am currently working with
+      <a href="https://gaiwan.co">Gaiwan GmbH</a>
+      as a technology consultant, helping them expand and
+      optimise their technology businesses.
+    </p>
 
-  <h4>Talks</h4>
+    <h4>Talks</h4>
 
-  <ul>
-    <li>
-      <a href="https://www.youtube.com/watch?v=J1qZiFQ_ibs" target="_blank">
-	Beyond the Hype: Obstacles on the Path to Clojure Adoption
-      </a>
-    </li>
-    <li>
-      <a href="https://www.youtube.com/watch?v=KL2g2bkPwsc" target="_blank">
-	Ornament - CSS and Styled Components in clj & cljs
-      </a>
-    </li>
-  </ul>
-  
-  <h4>Open Source</h4>
-  
-  <p>I spend a lot of time using, building, and contributing to Open Source Software. I was also recently funded by ClojuristsTogether to work on one my projects.</p>
+    <ul>
+      <li>
+	<a href="https://www.youtube.com/watch?v=J1qZiFQ_ibs" target="_blank">
+	  Beyond the Hype: Obstacles on the Path to Clojure Adoption
+	</a>
+      </li>
+      <li>
+	<a href="https://www.youtube.com/watch?v=KL2g2bkPwsc" target="_blank">
+	  Ornament - CSS and Styled Components in clj & cljs
+	</a>
+      </li>
+    </ul>
 
-  <p>My GitHub account: <a href="https://github.com/oxalorg">github.com/oxalorg</a></p>
-  
-  <h4>YouTube</h4>
+    <h4>Open Source</h4>
 
-  <p>I create youtube videos about Emacs, Vim, Clojure, and ClojureScript.
-    Check out my <a href="https://www.youtube.com/channel/UCd588hDu4bszrSHlLXC8eZA">YouTube Channel here</a>.</p>
+    <p>I spend a lot of time using, building, and contributing to Open Source Software. I was also recently funded by ClojuristsTogether to work on one my projects.</p>
 
-  <h4>Other Work</h4>
+    <p>My GitHub account: <a href="https://github.com/oxalorg">github.com/oxalorg</a></p>
 
-  <p>In 2020, I worked with a team from Yale University to develop a Covid Critical application currently being used by
-    New Haven, Connecticut.</p>
+    <h4>YouTube</h4>
 
-  <p>
-    In 2018, I left my job and co-founded (as the CTO) <a href="https://www.taazakitchen.com">Taaza Kitchen</a> &mdash;
-    an eGrocery platform, where I along with a team under me developed and designed the entire
-    platform from scratch. We grew the company to ~$150K ARR from 2 employees to over 15 and countless contractors.
-  </p>
+    <p>I create youtube videos about Emacs, Vim, Clojure, and ClojureScript.
+      Check out my <a href="https://www.youtube.com/channel/UCd588hDu4bszrSHlLXC8eZA">YouTube Channel here</a>.</p>
 
-  <p>
-    Before that, I launched several micro internet businesses since I was 14 years old.
-    Most notably &mdash; A graphic design studio,
-    a web development studio, and a marketplace for trading digital games.
-  </p>
+    <h4>Other Work</h4>
 
-  <h3>My web presence</h3>
-  <p>
-    [
-    <a href="mailto:mitesh@miteshshah.com">email</a> -
-    <a href="https://stackoverflow.com/users/4395646/oxalorg">stackoverflow</a>
-    - <a href="https://www.linkedin.com/in/mitesh-shah">linkedin</a> -
-    <a href="https://fosstodon.org/@oxalorg">fosstodon</a>
-    ]
-  </p>
+    <p>In 2020, I worked with a team from Yale University to develop a Covid Critical application currently being used by
+      New Haven, Connecticut.</p>
 
-  <ul>
-    <li> My
-      <a href="https://github.com/oxalorg">github account</a>
-    </li>
-    <li>My personal blog: <a href="https://oxal.org/blog/">oxal.org/blog</a></li>
-    <!-- <li> -->
-    <!--   My technical blog: -->
-    <!--   <a href="https://computableverse.com">computableverse.com</a> -->
-    <!-- </li> -->
-    <li>My 
-      <a href="https://www.youtube.com/channel/UCd588hDu4bszrSHlLXC8eZA/videos?view_as=subscriber">youtube channel</a>
-    </li>
-  </ul>
+    <p>
+      In 2018, I left my job and co-founded (as the CTO) <a href="https://www.taazakitchen.com">Taaza Kitchen</a> &mdash;
+      an eGrocery platform, where I along with a team under me developed and designed the entire
+      platform from scratch. We grew the company to ~$150K ARR from 2 employees to over 15 and countless contractors.
+    </p>
+
+    <p>
+      Before that, I launched several micro internet businesses since I was 14 years old.
+      Most notably &mdash; A graphic design studio,
+      a web development studio, and a marketplace for trading digital games.
+    </p>
+  </main>
+
+  <aside>
+    <h4>My blog</h4>
+    <p>
+      My internate name is oxalorg, and I keep my blog 
+<a href="https://oxal.org/blog/">oxal.org/blog</a> quite active!
+    </p>
+
+    <h4>My web presence</h4>
+    <p>
+      [
+      <a href="mailto:mitesh@miteshshah.com">email</a> /
+      <a href="https://www.linkedin.com/in/mitesh-shah">linkedin</a> /
+      <a href="https://fosstodon.org/@oxalorg">mastodon</a> /
+      <a href="https://twitter.com/@oxalorg">twitter</a>
+      ]
+    </p>
+
+    <ul>
+      <li>
+	<a href="https://github.com/oxalorg">github.com/oxalorg</a>
+      </li>
+      <!-- <li> -->
+	<!--   My technical blog: -->
+	<!--   <a href="https://computableverse.com">computableverse.com</a> -->
+	<!-- </li> -->
+      <li>
+	<a href="https://www.youtube.com/c/oxalorg">youtube.com/c/oxalorg</a>
+      </li>
+      <li><a href="https://stackoverflow.com/users/4395646/oxalorg">stackoverflow</a></li>
+    </ul>
 
 
-  <h3>Fun Stuff</h3>
-  <ul style="list-style: none; padding-left: 0px;">
-    <li>Cooks 2 minute noodles in 3 minutes</li>
-    <li>First used a computer sometime in the early 2000's</li>
-    <li>
-      Been playing Age of Empires since <sup><small>saveme</small></sup>
-    </li>
-    <li>My favourite DotA heros: Furion the Natures Prophet, Pudge the
-      Butcher, Mirana the Priestess of the Moon, & Tinker the Dr.
-      Clinker!</li>
-  </ul>
+    <!-- <h4>Fun Stuff</h4> -->
+    <!-- <ul style="list-style: none; padding-left: 0px;"> -->
+    <!--   <li>Cooks 2 minute noodles in 3 minutes</li> -->
+    <!--   <li>First used a computer sometime in the early 2000's</li> -->
+    <!--   <li> -->
+    <!-- 	Been playing Age of Empires since <sup><small>saveme</small></sup> -->
+    <!--   </li> -->
+    <!--   <li>My favourite DotA heros: Furion the Natures Prophet, Pudge the -->
+    <!-- 	Butcher, Mirana the Priestess of the Moon, & Tinker the Dr. -->
+    <!-- 	Clinker!</li> -->
+    <!-- </ul> -->
+  </aside>
 
   <!-- <h3>My Random Blogs</h3> -->
   <!-- <p>I have a bad habbit of buying domains and doing nothing with them. Here is a list of those domains:</p> -->
