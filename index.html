@@ -59,6 +59,40 @@
     .tagline {
       margin-top: 10px;
     }
+    .intergalactic-rogue {
+      position: relative;
+      background: linear-gradient(90deg, #ff6ec7, #7873f5, #4fc3f7, #b388ff, #ff6ec7);
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: cosmicShift 4s ease-in-out infinite;
+      font-weight: 700;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+    .intergalactic-rogue:hover {
+      animation: cosmicShift 1s ease-in-out infinite;
+      filter: drop-shadow(0 0 8px rgba(120, 115, 245, 0.6))
+             drop-shadow(0 0 20px rgba(79, 195, 247, 0.4));
+    }
+    .intergalactic-rogue::after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #ff6ec7, #7873f5, #4fc3f7);
+      transition: width 0.4s ease;
+    }
+    .intergalactic-rogue:hover::after {
+      width: 100%;
+    }
+    @keyframes cosmicShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
     @media (max-width: 768px) {
       body {
         grid-template-columns: 1fr;
@@ -91,7 +125,7 @@
     </div>
     <p>
       I am a Computer programmer by day,
-      <a href="https://oxal.org">Intergalactic Rogue</a>
+      <a href="https://oxal.org" class="intergalactic-rogue">Intergalactic Rogue</a>
       by night.
     </p>
 
@@ -211,6 +245,38 @@
   <!-- </ul> -->
 
   <blockquote>"Waste no more time arguing what a good man should be. Be one" - Marcus Aurelius</blockquote>
+
+  <script>
+    const rogue = document.querySelector('.intergalactic-rogue');
+    rogue.addEventListener('mousemove', (e) => {
+      const rect = rogue.getBoundingClientRect();
+      const x = e.clientX - rect.left + (Math.random() - 0.5) * 20;
+      const y = e.clientY - rect.top + (Math.random() - 0.5) * 10;
+      const star = document.createElement('span');
+      star.textContent = ['*', '.', '+'][Math.floor(Math.random() * 3)];
+      star.style.cssText = `
+        position: absolute;
+        left: ${x}px;
+        top: ${y}px;
+        pointer-events: none;
+        font-size: ${6 + Math.random() * 8}px;
+        color: hsl(${220 + Math.random() * 140}, 80%, 75%);
+        animation: starFade 0.8s ease-out forwards;
+        z-index: 10;
+      `;
+      rogue.appendChild(star);
+      setTimeout(() => star.remove(), 800);
+    });
+
+    const styleSheet = document.createElement('style');
+    styleSheet.textContent = `
+      @keyframes starFade {
+        0% { opacity: 1; transform: translateY(0) scale(1); }
+        100% { opacity: 0; transform: translateY(-15px) scale(0.3); }
+      }
+    `;
+    document.head.appendChild(styleSheet);
+  </script>
 </body>
 
 </html>

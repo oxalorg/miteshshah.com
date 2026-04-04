@@ -2,6 +2,10 @@
 
 Static website
 
+## Development
+
+- `pnpm dev` — Start local dev server with live reload (Vite)
+
 # Resume
 
 - Resume format in @resume.typ
