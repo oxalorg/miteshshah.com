@@ -90,24 +90,94 @@
       width: 100%;
     }
     .talks-list {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
     }
-    .talks-list a {
+    .talk-card {
+      display: block;
+      text-decoration: none;
+      border-radius: 10px;
+      overflow: hidden;
+      background: #1a1a2e;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      color: inherit;
+    }
+    .talk-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(120, 115, 245, 0.25),
+                  0 4px 12px rgba(0, 0, 0, 0.3);
+    }
+    .talk-card .talk-thumb {
+      width: 100%;
+      aspect-ratio: 16 / 10;
+      object-fit: cover;
+      display: block;
+      margin: 0;
+      border-radius: 0;
+      transition: filter 0.3s ease;
+    }
+    .talk-card:hover .talk-thumb {
+      filter: brightness(1.1);
+    }
+    .talk-card .talk-info {
+      padding: 14px 16px;
+    }
+    .talk-card .talk-title {
+      font-size: 0.95em;
+      font-weight: 600;
+      line-height: 1.4;
+      margin: 0 0 6px 0;
+      color: #e0e0e0;
+    }
+    .talk-card .talk-meta {
+      font-size: 0.78em;
+      color: #8888aa;
+      margin: 0;
       display: flex;
       align-items: center;
-      gap: 12px;
-      padding: 8px;
-      border-radius: 6px;
+      gap: 6px;
     }
-    .talks-list img {
-      width: 80px;
-      height: 50px;
-      object-fit: cover;
-      border-radius: 4px;
+    .talk-card .talk-meta .conf-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #ff6ec7, #7873f5);
       flex-shrink: 0;
-      margin: 0;
+    }
+    .talk-card .play-icon {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0.9);
+      width: 48px;
+      height: 48px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.25s ease, transform 0.25s ease;
+      backdrop-filter: blur(4px);
+    }
+    .talk-card .play-icon::after {
+      content: '';
+      display: block;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 8px 0 8px 14px;
+      border-color: transparent transparent transparent #fff;
+      margin-left: 3px;
+    }
+    .talk-card:hover .play-icon {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+    .talk-thumb-wrap {
+      position: relative;
+      overflow: hidden;
     }
     @keyframes cosmicShift {
       0%, 100% { background-position: 0% 50%; }
@@ -132,6 +202,9 @@
       blockquote {
         grid-column: 1;
       }
+      .talks-list {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
@@ -140,7 +213,7 @@
   <main>
     <h1>Mitesh Shah</h1>
     <div style="float:right;padding-left:12px;">
-      <img style="max-width: 100px; border-radius: 100%; margin-bottom: 0px;" src="static/me2.png"
+      <img style="max-width: 100px; border-radius: 100%; margin-bottom: 0px;" src="static/me3.jpg"
 	   alt="Mitesh Shah Profile Picture">
     </div>
     <p>
@@ -163,16 +236,30 @@
 
     <p>In my free time, I enjoy playing real-time strategy games, cooking, hacking with sensors and Raspberry Pi's, setting up my homelab, and doing street photography! I also dabble with local hosted llms, been building PC's since 2013, linux gaming using CachyOS (arch btw, lol), and am a big proponent of self hosted stuff and using old hardware.</p>
 
+    <p>You'll find my desk full of random hardware and tech gizmos. HELP!!!</p>
+
     <h4>Talks</h4>
 
     <div class="talks-list">
-      <a href="https://www.youtube.com/watch?v=J1qZiFQ_ibs" target="_blank">
-	<img src="static/main1.jpeg" alt="Beyond the Hype talk">
-	Beyond the Hype: Obstacles on the Path to Clojure Adoption
+      <a href="https://www.youtube.com/watch?v=J1qZiFQ_ibs" target="_blank" class="talk-card">
+        <div class="talk-thumb-wrap">
+          <img src="static/main1.jpeg" alt="Beyond the Hype talk" class="talk-thumb">
+          <div class="play-icon"></div>
+        </div>
+        <div class="talk-info">
+          <p class="talk-title">Beyond the Hype: Obstacles on the Path to Clojure Adoption</p>
+          <p class="talk-meta"><span class="conf-dot"></span> Heart of Clojure, Belgium 2024</p>
+        </div>
       </a>
-      <a href="https://www.youtube.com/watch?v=KL2g2bkPwsc" target="_blank">
-	<img src="static/main2.png" alt="Ornament talk">
-	Ornament - CSS and Styled Components in clj & cljs
+      <a href="https://www.youtube.com/watch?v=KL2g2bkPwsc" target="_blank" class="talk-card">
+        <div class="talk-thumb-wrap">
+          <img src="static/main2.png" alt="Ornament talk" class="talk-thumb">
+          <div class="play-icon"></div>
+        </div>
+        <div class="talk-info">
+          <p class="talk-title">Ornament: CSS and Styled Components in Clojure &amp; ClojureScript</p>
+          <p class="talk-meta"><span class="conf-dot"></span> Heart of Clojure, Belgium 2024</p>
+        </div>
       </a>
     </div>
 
