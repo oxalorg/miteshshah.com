@@ -89,6 +89,26 @@
     .intergalactic-rogue:hover::after {
       width: 100%;
     }
+    .talks-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+    .talks-list a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px;
+      border-radius: 6px;
+    }
+    .talks-list img {
+      width: 80px;
+      height: 50px;
+      object-fit: cover;
+      border-radius: 4px;
+      flex-shrink: 0;
+      margin: 0;
+    }
     @keyframes cosmicShift {
       0%, 100% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -145,18 +165,16 @@
 
     <h4>Talks</h4>
 
-    <ul>
-      <li>
-	<a href="https://www.youtube.com/watch?v=J1qZiFQ_ibs" target="_blank">
-	  Beyond the Hype: Obstacles on the Path to Clojure Adoption
-	</a>
-      </li>
-      <li>
-	<a href="https://www.youtube.com/watch?v=KL2g2bkPwsc" target="_blank">
-	  Ornament - CSS and Styled Components in clj & cljs
-	</a>
-      </li>
-    </ul>
+    <div class="talks-list">
+      <a href="https://www.youtube.com/watch?v=J1qZiFQ_ibs" target="_blank">
+	<img src="static/main1.jpeg" alt="Beyond the Hype talk">
+	Beyond the Hype: Obstacles on the Path to Clojure Adoption
+      </a>
+      <a href="https://www.youtube.com/watch?v=KL2g2bkPwsc" target="_blank">
+	<img src="static/main2.png" alt="Ornament talk">
+	Ornament - CSS and Styled Components in clj & cljs
+      </a>
+    </div>
 
     <h4>Open Source</h4>
 
@@ -172,7 +190,7 @@
     <h4>Other Work</h4>
 
     <p>In 2020, I worked with a team from Yale University to develop a Covid Critical application currently being used by
-      New Haven, Connecticut.</p>
+      the Government of New Haven, Connecticut.</p>
 
     <p>
       In 2018, I left my job and co-founded (as the CTO) <a href="https://www.taazakitchen.com">Taaza Kitchen</a> &mdash;
