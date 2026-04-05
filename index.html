@@ -20,6 +20,16 @@
   <link rel="stylesheet" href="https://unpkg.com/normalize.css@7.0.0/normalize.css" type="text/css" />
   <link rel="stylesheet" href="https://unpkg.com/sakura.css@1.3.1/css/sakura-ink.css" type="text/css" />
   <style>
+    :root {
+      --terminal: #1a9e1a;
+    }
+    /* Override sakura-ink accent colors */
+    a {
+      color: var(--terminal);
+    }
+    a:hover {
+      color: color-mix(in srgb, var(--terminal) 70%, white);
+    }
     *,
     h1 {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
@@ -47,6 +57,15 @@
       grid-column: 2;
       position: sticky;
       top: 20px;
+      border-left: 2px solid rgba(26, 158, 26, 0.15);
+      padding-left: 24px;
+      background: linear-gradient(135deg, rgba(26, 158, 26, 0.03), rgba(26, 158, 26, 0.02));
+      border-radius: 0 8px 8px 0;
+      padding: 16px 20px 16px 24px;
+    }
+    aside a {
+      font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+      font-size: 0.9em;
     }
     .profile-img {
       max-width: 150px;
@@ -55,13 +74,122 @@
     }
     h1 {
       margin-bottom: 0;
+      font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+    }
+    /* Typing cursor after name */
+    .typed-name::after {
+      content: '_';
+      animation: cursorBlink 1s step-end infinite;
+      color: var(--terminal);
+      font-weight: 300;
+      margin-left: 2px;
+    }
+    @keyframes cursorBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
     }
     .tagline {
       margin-top: 10px;
     }
+
+    /* Section heading accents — terminal prompt style */
+    main h4 {
+      position: relative;
+      padding-left: 0;
+      margin-top: 2em;
+      letter-spacing: 0.3px;
+      font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+    }
+    main h4::before {
+      content: '$ ';
+      color: var(--terminal);
+      font-weight: 400;
+      opacity: 0.7;
+    }
+
+    /* Staggered fade-in on page load */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeSlideIn 0.5s ease forwards;
+    }
+    .fade-in:nth-child(1) { animation-delay: 0s; }
+    .fade-in:nth-child(2) { animation-delay: 0.07s; }
+    .fade-in:nth-child(3) { animation-delay: 0.14s; }
+    .fade-in:nth-child(4) { animation-delay: 0.21s; }
+    .fade-in:nth-child(5) { animation-delay: 0.28s; }
+    .fade-in:nth-child(6) { animation-delay: 0.35s; }
+    .fade-in:nth-child(7) { animation-delay: 0.42s; }
+    .fade-in:nth-child(8) { animation-delay: 0.49s; }
+    .fade-in:nth-child(9) { animation-delay: 0.56s; }
+    .fade-in:nth-child(10) { animation-delay: 0.63s; }
+    .fade-in:nth-child(11) { animation-delay: 0.70s; }
+    .fade-in:nth-child(12) { animation-delay: 0.77s; }
+    .fade-in:nth-child(13) { animation-delay: 0.84s; }
+    .fade-in:nth-child(14) { animation-delay: 0.91s; }
+    .fade-in:nth-child(15) { animation-delay: 0.98s; }
+    @keyframes fadeSlideIn {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Profile image retro terminal */
+    .profile-wrap {
+      float: right;
+      padding-left: 16px;
+    }
+    .profile-wrap .terminal-frame {
+      background: #0a0a0a;
+      border: 1px solid #1a9e1a;
+      border-radius: 6px;
+      padding: 3px;
+      position: relative;
+      overflow: hidden;
+    }
+    .profile-wrap .terminal-frame::before {
+      content: '● ○ ○';
+      display: block;
+      font-size: 7px;
+      color: #1a9e1a;
+      padding: 3px 6px 2px;
+      letter-spacing: 2px;
+      opacity: 0.6;
+    }
+    .profile-wrap .terminal-frame::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(51, 255, 51, 0.03) 2px,
+        rgba(51, 255, 51, 0.03) 4px
+      );
+      pointer-events: none;
+      z-index: 1;
+    }
+    .profile-wrap img {
+      max-width: 130px;
+      display: block;
+      border-radius: 2px;
+      margin: 0;
+      filter: grayscale(1) brightness(0.85) contrast(1.2);
+      mix-blend-mode: screen;
+      transition: filter 0.3s ease;
+    }
+    .profile-wrap .terminal-frame:hover img {
+      filter: grayscale(0.5) brightness(0.95) contrast(1.1);
+    }
+    .profile-wrap .terminal-frame:hover {
+      box-shadow: 0 0 12px rgba(51, 255, 51, 0.3), 0 0 30px rgba(51, 255, 51, 0.1);
+    }
+
     .intergalactic-rogue {
       position: relative;
-      background: linear-gradient(90deg, #ff6ec7, #7873f5, #4fc3f7, #b388ff, #ff6ec7);
+      background: linear-gradient(90deg, #0d6b0d, var(--terminal), #2ecc2e, var(--terminal), #0d6b0d);
       background-size: 300% 100%;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
@@ -73,8 +201,8 @@
     }
     .intergalactic-rogue:hover {
       animation: cosmicShift 1s ease-in-out infinite;
-      filter: drop-shadow(0 0 8px rgba(120, 115, 245, 0.6))
-             drop-shadow(0 0 20px rgba(79, 195, 247, 0.4));
+      filter: drop-shadow(0 0 8px rgba(26, 158, 26, 0.6))
+             drop-shadow(0 0 20px rgba(26, 158, 26, 0.4));
     }
     .intergalactic-rogue::after {
       content: '';
@@ -83,12 +211,33 @@
       left: 0;
       width: 0;
       height: 2px;
-      background: linear-gradient(90deg, #ff6ec7, #7873f5, #4fc3f7);
+      background: linear-gradient(90deg, #0d6b0d, var(--terminal), #2ecc2e);
       transition: width 0.4s ease;
     }
     .intergalactic-rogue:hover::after {
       width: 100%;
     }
+
+    /* Link hover transitions */
+    main a:not(.intergalactic-rogue):not(.talk-card) {
+      transition: color 0.2s ease;
+      text-decoration-color: rgba(26, 158, 26, 0.3);
+      text-underline-offset: 3px;
+    }
+    main a:not(.intergalactic-rogue):not(.talk-card):hover {
+      text-decoration-color: rgba(26, 158, 26, 0.8);
+    }
+
+    /* Social links monospace bar */
+    .social-bar {
+      font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+      font-size: 0.88em;
+      letter-spacing: -0.3px;
+    }
+    .social-bar a {
+      transition: color 0.2s ease;
+    }
+
     .talks-list {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -99,13 +248,13 @@
       text-decoration: none;
       border-radius: 10px;
       overflow: hidden;
-      background: #1a1a2e;
+      background: #0a1a0a;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
       color: inherit;
     }
     .talk-card:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(120, 115, 245, 0.25),
+      box-shadow: 0 12px 32px rgba(26, 158, 26, 0.25),
                   0 4px 12px rgba(0, 0, 0, 0.3);
     }
     .talk-card .talk-thumb {
@@ -128,11 +277,11 @@
       font-weight: 600;
       line-height: 1.4;
       margin: 0 0 6px 0;
-      color: #e0e0e0;
+      color: #c0e0c0;
     }
     .talk-card .talk-meta {
       font-size: 0.78em;
-      color: #8888aa;
+      color: #6a9a6a;
       margin: 0;
       display: flex;
       align-items: center;
@@ -142,7 +291,7 @@
       width: 6px;
       height: 6px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #ff6ec7, #7873f5);
+      background: linear-gradient(135deg, #0d6b0d, var(--terminal));
       flex-shrink: 0;
     }
     .talk-card .play-icon {
@@ -152,7 +301,8 @@
       transform: translate(-50%, -50%) scale(0.9);
       width: 48px;
       height: 48px;
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.7);
+      border: 1px solid rgba(26, 158, 26, 0.4);
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -168,7 +318,7 @@
       height: 0;
       border-style: solid;
       border-width: 8px 0 8px 14px;
-      border-color: transparent transparent transparent #fff;
+      border-color: transparent transparent transparent var(--terminal);
       margin-left: 3px;
     }
     .talk-card:hover .play-icon {
@@ -179,6 +329,241 @@
       position: relative;
       overflow: hidden;
     }
+
+    /* HELP!!! easter egg */
+    .help-easter-egg {
+      display: inline-block;
+      cursor: help;
+      transition: transform 0.15s ease;
+    }
+    .help-easter-egg:hover {
+      animation: helpShake 0.4s ease-in-out infinite;
+      color: #ff6ec7;
+    }
+    @keyframes helpShake {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-3deg); }
+      75% { transform: rotate(3deg); }
+    }
+
+    /* Tree-style sidebar list */
+    aside ul {
+      list-style: none;
+      padding-left: 0;
+      font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+      font-size: 0.85em;
+      margin: 0.5em 0;
+    }
+    aside ul li {
+      padding: 0;
+      margin: 0;
+      line-height: 1.6;
+      position: relative;
+      padding-left: 20px;
+    }
+    aside ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: #555;
+    }
+    aside ul li::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 50%;
+      width: 14px;
+      height: 1px;
+      background: #555;
+    }
+    aside ul li:last-child::before {
+      bottom: 50%;
+    }
+    aside h4 {
+      font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+      font-size: 0.95em;
+    }
+    aside h4::before {
+      content: '# ';
+      color: var(--terminal);
+      opacity: 0.5;
+      font-weight: 400;
+    }
+
+    /* Blockquote cosmic styling */
+    blockquote {
+      border-left: 3px solid transparent;
+      border-image: linear-gradient(180deg, #0d6b0d, var(--terminal), #2ecc2e) 1;
+      font-style: italic;
+      color: #6a9a6a;
+      position: relative;
+      font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+      font-size: 0.9em;
+    }
+
+    /* Terminal status bar */
+    .status-bar {
+      grid-column: 1 / -1;
+      font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+      font-size: 0.75em;
+      color: #555;
+      border-top: 1px solid rgba(26, 158, 26, 0.1);
+      padding: 8px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .status-bar .status-left {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .status-bar .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--terminal);
+      animation: statusPulse 2s ease-in-out infinite;
+    }
+    @keyframes statusPulse {
+      0%, 100% { opacity: 0.4; }
+      50% { opacity: 1; }
+    }
+
+    /* Konami code glitch effect */
+    .glitch-mode {
+      animation: glitch 0.3s ease infinite;
+    }
+    .glitch-mode * {
+      animation: textGlitch 0.1s ease infinite !important;
+    }
+    @keyframes glitch {
+      0% { filter: none; }
+      20% { filter: hue-rotate(90deg); }
+      40% { filter: invert(0.1); }
+      60% { filter: hue-rotate(-90deg); }
+      80% { filter: saturate(3); }
+      100% { filter: none; }
+    }
+    @keyframes textGlitch {
+      0% { transform: none; }
+      25% { transform: skewX(2deg); }
+      50% { transform: skewX(-1deg) translateX(1px); }
+      75% { transform: skewX(1deg); }
+      100% { transform: none; }
+    }
+
+    /* Debug mode trigger in sidebar */
+    .debug-trigger {
+      margin-top: 2em;
+      padding: 8px 12px;
+      font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
+      font-size: 0.8em;
+      color: #444;
+      border: 1px dashed #333;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      user-select: none;
+      position: relative;
+      overflow: hidden;
+    }
+    .debug-trigger:hover {
+      color: var(--terminal);
+      border-color: var(--terminal);
+      background: rgba(26, 158, 26, 0.05);
+      box-shadow: 0 0 8px rgba(26, 158, 26, 0.15);
+    }
+    .debug-trigger:active {
+      transform: scale(0.98);
+    }
+    .debug-prompt {
+      color: #555;
+      transition: color 0.3s ease;
+    }
+    .debug-trigger:hover .debug-prompt {
+      color: var(--terminal);
+    }
+    .debug-cmd {
+      transition: color 0.3s ease;
+    }
+    .debug-cursor {
+      animation: cursorBlink 1s step-end infinite;
+      color: #555;
+      transition: color 0.3s ease;
+    }
+    .debug-trigger:hover .debug-cursor {
+      color: var(--terminal);
+    }
+    .debug-trigger.active {
+      color: #ff3333;
+      border-color: #ff3333;
+      background: rgba(255, 51, 51, 0.05);
+      box-shadow: 0 0 12px rgba(255, 51, 51, 0.2);
+    }
+
+    /* WebGL glitch: CRT boot power-on */
+    .crt-boot {
+      clip-path: inset(49.5% 0);
+      animation: crtPowerOn 0.4s ease-out forwards;
+    }
+    @keyframes crtPowerOn {
+      0%   { clip-path: inset(49.5% 0); filter: brightness(2); }
+      30%  { clip-path: inset(20% 0); filter: brightness(1.5); }
+      100% { clip-path: inset(0% 0); filter: brightness(1); }
+    }
+    /* Ambient: micro RGB split */
+    .glitch-rgb {
+      animation: rgbSplit 0.1s ease;
+    }
+    @keyframes rgbSplit {
+      0%   { filter: none; }
+      25%  { filter: drop-shadow(-2px 0 0 rgba(255,0,0,0.3))
+                    drop-shadow(2px 0 0 rgba(0,255,0,0.3)); }
+      50%  { filter: drop-shadow(1px 0 0 rgba(0,0,255,0.3))
+                    drop-shadow(-1px 0 0 rgba(255,0,0,0.3)); }
+      100% { filter: none; }
+    }
+    /* Ambient: color invert flash */
+    .glitch-invert {
+      animation: invertFlash 0.06s steps(1);
+    }
+    @keyframes invertFlash {
+      0%, 100% { filter: none; }
+      50% { filter: invert(1) hue-rotate(180deg); }
+    }
+    /* Ambient: skew distortion */
+    .glitch-skew {
+      animation: skewGlitch 0.12s ease;
+    }
+    @keyframes skewGlitch {
+      0%, 100% { transform: none; }
+      30% { transform: skewX(-2deg) translateX(3px); }
+      60% { transform: skewX(1deg) translateX(-2px); }
+    }
+
+    /* Subtle scanline overlay */
+    body::after {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.015) 2px,
+        rgba(0, 0, 0, 0.015) 4px
+      );
+      z-index: 9999;
+    }
+
     @keyframes cosmicShift {
       0%, 100% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
@@ -194,6 +579,10 @@
       aside {
         grid-column: 1;
         position: static;
+        border-left: none;
+        border-top: 2px solid rgba(26, 158, 26, 0.15);
+        border-radius: 0 0 8px 8px;
+        padding: 16px 20px;
       }
       .header-section {
         flex-direction: column-reverse;
@@ -205,42 +594,49 @@
       .talks-list {
         grid-template-columns: 1fr;
       }
+      .status-bar {
+        grid-column: 1;
+        flex-direction: column;
+        gap: 4px;
+        text-align: center;
+      }
     }
   </style>
 </head>
 
 <body>
   <main>
-    <h1>Mitesh Shah</h1>
-    <div style="float:right;padding-left:12px;">
-      <img style="max-width: 100px; border-radius: 100%; margin-bottom: 0px;" src="static/me3.jpg"
-	   alt="Mitesh Shah Profile Picture">
+    <h1 class="fade-in typed-name" data-scramble="Mitesh Shah"></h1>
+    <div class="profile-wrap fade-in">
+      <div class="terminal-frame">
+        <img src="static/me3.jpeg" alt="Mitesh Shah Profile Picture">
+      </div>
     </div>
-    <p>
+    <p class="fade-in">
       I am a Computer programmer by day,
       <a href="https://oxal.org" class="intergalactic-rogue">Intergalactic Rogue</a>
       by night.
     </p>
 
-    <h4>Origin</h4>
+    <h4 class="fade-in">cat origin.txt</h4>
 
-    <p>My story began with an unhealthy addiction to video games. As a young 13 year old boy I got gifted a PC, this was very rare back then in Mumbai/India. A privilege I will never forget. I would spend all my day fidgeting with Windows, and playing strategy and mmorpg games. Soon my brain latched onto automating level ups in these games and soon enough I found myself learning scripting and programming to hack them. From that moment on I knew what my career would be :)</p>
+    <p class="fade-in">My story began with an unhealthy addiction to video games. As a young 13 year old boy I got gifted a PC, this was very rare back then in Mumbai/India. A privilege I will never forget. I would spend all my day fidgeting with Windows, and playing strategy and mmorpg games. Soon my brain latched onto automating level ups in these games and soon enough I found myself learning scripting and programming to hack them. From that moment on I knew what my career would be :)</p>
 
-    <p>Now I work as a full-stack developer, fractional CTO, software &amp; product consultant helping startups and small to medium-sized companies figure out their product, their users, and help them with their technology stack.</p>
+    <h4 class="fade-in">systemctl status career</h4>
 
-    <h4>Professional</h4>
+    <p class="fade-in">Now I work as a full-stack developer, fractional CTO, software &amp; product consultant helping startups and small to medium-sized companies figure out their product, their users, and help them with their technology stack.</p>
 
-    <p>I started working at <a href="https://gaiwan.co">Gaiwan</a> 6 years ago as a Founding Engineer. Experienced in system architecture, data driven design, high performance computing. Also have a great radar for detecting over engineering before it happens, and a keen eye to ensure the technology work being done stays true to the business objectives. We have helped multiple clients and their teams by coming in as experts or as a fractional CTO.</p>
+    <p class="fade-in">I started working at <a href="https://gaiwan.co">Gaiwan</a> 6 years ago as a Founding Engineer. Experienced in system architecture, data driven design, high performance computing. Also have a great radar for detecting over engineering before it happens, and a keen eye to ensure the technology work being done stays true to the business objectives. We have helped multiple clients and their teams by coming in as experts or as a fractional CTO.</p>
 
-    <h4>Personal</h4>
+    <h4 class="fade-in">cat /dev/urandom</h4>
 
-    <p>In my free time, I enjoy playing real-time strategy games, cooking, hacking with sensors and Raspberry Pi's, setting up my homelab, and doing street photography! I also dabble with local hosted llms, been building PC's since 2013, linux gaming using CachyOS (arch btw, lol), and am a big proponent of self hosted stuff and using old hardware.</p>
+    <p class="fade-in">In my free time, I enjoy playing real-time strategy games, cooking, hacking with sensors and Raspberry Pi's, setting up my homelab, and doing street photography! I also dabble with local hosted llms, been building PC's since 2013, linux gaming using CachyOS (arch btw, lol), and am a big proponent of self hosted stuff and using old hardware.</p>
 
-    <p>You'll find my desk full of random hardware and tech gizmos. HELP!!!</p>
+    <p class="fade-in">You'll find my desk full of random hardware and tech gizmos. <span class="help-easter-egg">HELP!!!</span></p>
 
-    <h4>Talks</h4>
+    <h4 class="fade-in">ls ~/talks | xargs imgcat</h4>
 
-    <div class="talks-list">
+    <div class="talks-list fade-in">
       <a href="https://www.youtube.com/watch?v=J1qZiFQ_ibs" target="_blank" class="talk-card">
         <div class="talk-thumb-wrap">
           <img src="static/main1.jpeg" alt="Beyond the Hype talk" class="talk-thumb">
@@ -263,18 +659,18 @@
       </a>
     </div>
 
-    <h4>Open Source</h4>
+    <h4 class="fade-in">chmod 777 code</h4>
 
-    <p>I spend a lot of time using, building, and contributing to Open Source Software. I was also recently funded by ClojuristsTogether to work on one my projects.</p>
+    <p class="fade-in">I spend a lot of time using, building, and contributing to Open Source Software. I was also recently funded by ClojuristsTogether to work on one my projects.</p>
 
-    <p>My GitHub account: <a href="https://github.com/oxalorg">github.com/oxalorg</a></p>
+    <p class="fade-in">My GitHub account: <a href="https://github.com/oxalorg">github.com/oxalorg</a></p>
 
-    <h4>YouTube</h4>
+    <h4 class="fade-in">youtube-dl --upload</h4>
 
-    <p>I create youtube videos about Emacs, Vim, Clojure, and ClojureScript.
+    <p class="fade-in">I create youtube videos about Emacs, Vim, Clojure, and ClojureScript.
       Check out my <a href="https://www.youtube.com/channel/UCd588hDu4bszrSHlLXC8eZA">YouTube Channel here</a>.</p>
 
-    <h4>Other Work</h4>
+    <h4 class="fade-in">find / -name "side-quests"</h4>
 
     <p>In 2020, I worked with a team from Yale University to develop a Covid Critical application currently being used by
       the Government of New Haven, Connecticut.</p>
@@ -295,12 +691,12 @@
   <aside>
     <h4>My blog</h4>
     <p>
-      My internate name is oxalorg, and I keep my blog 
+      My internet name is oxalorg, and I keep my blog 
 <a href="https://oxal.org/blog/">oxal.org/blog</a> quite active!
     </p>
 
     <h4>My web presence</h4>
-    <p>
+    <p class="social-bar">
       [
       <a href="mailto:mitesh@miteshshah.com">email</a> /
       <a href="https://www.linkedin.com/in/mitesh-shah">linkedin</a> /
@@ -338,6 +734,10 @@
     <!-- 	Butcher, Mirana the Priestess of the Moon, & Tinker the Dr. -->
     <!-- 	Clinker!</li> -->
     <!-- </ul> -->
+
+    <div class="debug-trigger" id="debug-trigger">
+      <span class="debug-prompt">$</span> <span class="debug-cmd">sudo enter_debug_mode</span><span class="debug-cursor">_</span>
+    </div>
   </aside>
 
   <!-- <h3>My Random Blogs</h3> -->
@@ -353,7 +753,50 @@
 
   <blockquote>"Waste no more time arguing what a good man should be. Be one" - Marcus Aurelius</blockquote>
 
+  <div class="status-bar">
+    <span class="status-left"><span class="status-dot"></span> mitesh@miteshshah.com</span>
+    <span>uptime: since 199X | loc: mumbai -> world</span>
+  </div>
+
   <script>
+    // Scramble/decode text effect
+    (() => {
+      const el = document.querySelector('[data-scramble]');
+      const finalText = el.dataset.scramble;
+      const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
+      const totalDuration = 1200;
+      const staggerPerChar = totalDuration / finalText.length;
+      const scrambleCycles = 6;
+      let resolved = 0;
+      const startDelay = 300;
+
+      // Start with random chars
+      el.textContent = finalText.split('').map(c =>
+        c === ' ' ? ' ' : chars[Math.floor(Math.random() * chars.length)]
+      ).join('');
+
+      setTimeout(() => {
+        const interval = setInterval(() => {
+          el.textContent = finalText.split('').map((c, i) => {
+            if (c === ' ') return ' ';
+            if (i < resolved) return c;
+            return chars[Math.floor(Math.random() * chars.length)];
+          }).join('');
+        }, 40);
+
+        finalText.split('').forEach((c, i) => {
+          if (c === ' ') return;
+          setTimeout(() => {
+            resolved = Math.max(resolved, i + 1);
+            if (i === finalText.length - 1) {
+              clearInterval(interval);
+              el.textContent = finalText;
+            }
+          }, i * staggerPerChar + Math.random() * staggerPerChar * 0.5);
+        });
+      }, startDelay);
+    })();
+
     const rogue = document.querySelector('.intergalactic-rogue');
     rogue.addEventListener('mousemove', (e) => {
       const rect = rogue.getBoundingClientRect();
@@ -383,7 +826,45 @@
       }
     `;
     document.head.appendChild(styleSheet);
+
+    // Konami Code: up up down down left right left right b a
+    const termColor = getComputedStyle(document.documentElement).getPropertyValue('--terminal').trim();
+    const konamiCode = [38,38,40,40,37,39,37,39,66,65];
+    let konamiIndex = 0;
+    document.addEventListener('keydown', (e) => {
+      if (e.keyCode === konamiCode[konamiIndex]) {
+        konamiIndex++;
+        if (konamiIndex === konamiCode.length) {
+          konamiIndex = 0;
+          document.body.classList.add('glitch-mode');
+          const msg = document.createElement('div');
+          msg.style.cssText = `
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-family: "SF Mono", "Fira Code", monospace; font-size: 1.5em;
+            color: ${termColor}; background: rgba(0,0,0,0.9); padding: 24px 40px;
+            border: 1px solid ${termColor}; border-radius: 8px; z-index: 99999;
+            text-align: center; line-height: 1.8;
+            box-shadow: 0 0 30px rgba(59, 34, 234, 0.3), inset 0 0 30px rgba(59, 34, 234, 0.05);
+          `;
+          msg.innerHTML = `> ACCESS GRANTED<br><span style="font-size:0.7em;color:#888;">you found the easter egg. hire me?</span>`;
+          document.body.appendChild(msg);
+          setTimeout(() => {
+            document.body.classList.remove('glitch-mode');
+            msg.remove();
+          }, 3000);
+        }
+      } else {
+        konamiIndex = 0;
+      }
+    });
+
+    // Console easter egg for fellow devs
+    console.log('%c> whoami', `color: ${termColor}; font-size: 14px; font-family: monospace;`);
+    console.log('%cMitesh Shah — hacker, builder, intergalactic rogue', 'color: #b388ff; font-size: 12px; font-family: monospace;');
+    console.log('%c> cat /etc/motd', `color: ${termColor}; font-size: 14px; font-family: monospace;`);
+    console.log('%cYou\'re reading my console logs? We should definitely be friends.\nTry the Konami Code on this page ;)', 'color: #888; font-size: 11px; font-family: monospace;');
   </script>
+  <script src="glitch.js"></script>
 </body>
 
 </html>
