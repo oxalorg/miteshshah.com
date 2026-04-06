@@ -1,6 +1,6 @@
 #import "resume.typ": *
 
-#let name = "Mitesh Shah (@oxalorg)"
+#let name = "Mitesh Shah"
 #let email = "mitesh@miteshshah.com"
 #let github = "oxalorg"
 #let personal-site = "miteshshah.com"
@@ -16,7 +16,8 @@
   website: personal-site,
   github-username: github,
   linkedin-user-id: "mitesh-shah",
-  mastodon: "fosstodon.org/@oxalorg"
+  mastodon: "fosstodon.org/@oxalorg",
+  blog: "oxal.org/blog"
 )
 
 #custom-title("Work")[
@@ -27,11 +28,11 @@
     2020,
     "Present"
   )[
-    - Worked as tech  & product lead for several fast paced startups and enterprise clients.
-    - *Zoom and it's child company Pitch*: Building out the oAuth integrations for their zoom apps platform, worked on a massive 350k+ LOC codebase. Worked closely with Pitch's co-founder and Zoom's engineers
-    - *Humble AI*: Created their entire product line of AI workflow execution engine (like n8n). Scaled it to over 100,000+ workflows and over *40M workflow executions*.
+    - Worked as tech & product lead for several fast paced startups and enterprise clients.
+    - *Pitch and it's investor Zoom.us*: Building out the OAuth integrations for their Zoom Apps Platform. Worked closely with Pitch's co-founder and Zoom's engineers on a massive 350k+ LOC codebase.
+    - *Humble AI*: Created their entire product line of AI workflow execution engine (like n8n). Scaled it to 100,000+ workflows and over *40M workflow executions*.
     - *OpenTech.eco*: Built data pipelines and dashboards for their product GRID which sources energy data from buildings deployed across major cities in Canada and North America. The scale of this was importing data coming from over 1,000,000+ properties. I helped speed up this ETL process from 1.5 hours down to 8 minutes.
-	- *ITRevolution*: I tightly collaborated with *Gene Kim*, the author of The Phoenix Project,  to build an entire product line for them. We created a Bespoke video editing and rendering tool to allow editing of conference videos via the browser. Created a live streaming conference platform handling 1000s of concurrent users. I lead the development of all of these products from planning to delivery. I also got mentioned in his latest book *Vibe Coding* with Steve Yegge as I helped introduce Gene to AI/Agentic workflows.
+	- *ITRevolution*: I tightly collaborated with *Gene Kim*, the author of The Phoenix Project,  to build an entire product line for them. We created a bespoke video editing and rendering tool to allow editing of conference videos via the browser. Created a live streaming conference platform handling 1000s of concurrent users. I also got mentioned in his latest book *Vibe Coding* with Steve Yegge as I helped introduce Gene to AI/Agentic workflows.
   ]
 
   #work-heading(
@@ -41,7 +42,7 @@
     2021,
     2022
   )[
-    - Got funded by ClojuristsTogether.org to work on enhancing Clojurians Slack Log (clojurians-log.clojureverse.org) which I have been maintining for multiple years.
+    - Got funded by ClojuristsTogether.org to work on enhancing Clojurians Slack Log (clojurians-log.clojureverse.org) which I have been maintaining for multiple years.
   ]
 
   #work-heading(
@@ -52,7 +53,7 @@
     2020
   )[
     - Grew the company from 2 employees to over 15, from \$0 to \$150,000 ARR. Managed product, tech, sales, marketing, brand awareness, customer acquisition for 20,000+ customers 
-    - Developed a production-ready Django e-Commerce platform built from scratch handling over 20,000 customers with intrictate rules based engine and automations for marketing. Also built Android apps for warehouse packers with rack optimisation algorithms, and an app for delivery boys solving route optimisation.
+    - Developed a production-ready Django e-Commerce platform built from scratch handling over 20,000 customers with intricate rules-based engine and automations for marketing. Also built Android apps for warehouse packers with rack optimisation algorithms, and an app for delivery boys solving route optimisation.
   ]
 
   #work-heading(
@@ -76,7 +77,7 @@
 
   #project-heading(
     "4ever-clojure",
-    [(256+ stars on GitHub) Clojure exercies in the browser. After 4clojure shut down, created the de-facto alternative. Uses sci - the small Clojure interpreter],
+    [(256+ stars on GitHub) Clojure exercises in the browser. After 4clojure shut down, created the de-facto alternative. Uses sci - the small Clojure interpreter],
     project-url: "https://4clojure.oxal.org"
   )
 
@@ -95,8 +96,8 @@
 #custom-title("Education & Activities")[
   #education-heading("Mumbai University", "", "B.E", "Computer Engineering", 2013, 2017)[
   - GPA: 8.03 out of 10.00
-  - Developed an A.I. which uses human evolution and neural networks to learn and play games on its own. Simulations developed using Neuroevolution of augmenting topologies
-  - *YouTube:* Clojure, ClojureScript, & Emacs related programming videos (#link("https://youtube.com/c/oxalorg")[youtube.com/c/oxalorg])
+  - Developed an A.I. which uses human evolution and neural networks to learn and play games on its own. Simulations developed using Neuroevolution of augmenting topologies (#link("https://github.com/oxalorg/neat.py")[github.com/oxalorg/neat.py])
+  - *YouTube:* Clojure, ClojureScript, & Emacs related programming videos *(#link("https://youtube.com/c/oxalorg")[youtube.com/c/oxalorg])*
   - *Blog:* #link("https://oxal.org/blog/")[oxal.org/blog/]
   - *StackOverflow:* Ranked among the top 15% contributors overall
   ]

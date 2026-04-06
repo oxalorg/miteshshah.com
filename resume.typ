@@ -20,6 +20,7 @@
   linkedin-user-id: "",
   github-username: "",
   mastodon: "",
+  blog: "",
   lang: "en",
   body
 ) = {
@@ -52,12 +53,13 @@
     #v(-0.2em)
   ]
 
-  let contact_item(value, link-type: "", prefix: "") = {
+  let contact_item(value, link-type: "", prefix: "", label: "") = {
     if value != "" {
+      let display = if label != "" { label } else { prefix + value }
       if link-type != "" {
-        underline(offset: 0.3em)[#link(link-type + value)[#(prefix + value)]]
+        underline(offset: 0.3em)[#link(link-type + value)[#display]]
       } else {
-        value
+        display
       }
     }
   }
@@ -75,9 +77,10 @@
         contact_item(location),
         contact_item(email, link-type: "mailto:"),
         contact_item(website, link-type: "https://"),
-        contact_item(linkedin-user-id, link-type: "https://linkedin.com/in/", prefix: "linkedin.com/in/"),
+        contact_item(linkedin-user-id, link-type: "https://linkedin.com/in/", prefix: "", label: "linkedin"),
         contact_item(github-username, link-type: "https://github.com/", prefix: "github.com/"),
         contact_item(mastodon, link-type: "https://", prefix: ""),
+        contact_item(blog + "/", link-type: "https://", prefix: "", label: blog),
       )
       items.filter(x => x != none).join([
         #show "|": sep => {
