@@ -63,8 +63,8 @@
   }
 
   align(author-position, [
-    #upper(text(font-size+16pt, weight: "extrabold")[#author-name])
-    #v(-2em)
+    #upper(text(font-size+10pt, weight: "extrabold")[#author-name])
+    #v(-1.5em)
   ])
 
   align(personal-info-position, text(personal-info-font-size)[    
@@ -178,10 +178,10 @@
   assert(type(start-date) == datetime or type(start-date) == int)
   assert(type(end-date) == datetime or type(end-date) == int or type(end-date) == str)
 
-  generic_2x2(
-    (1fr, 1fr),
-    [*#title*], [*#period_worked(start-date, end-date)*], 
-    [#company], emph(location)
+  grid(
+    columns: (1fr, auto),
+    align(left)[*#title*, #company],
+    align(right)[*#period_worked(start-date, end-date)*],
   )
   v(-0.2em)
   if body != [] {
@@ -193,23 +193,15 @@
 }
 
 // Pretty self-explanatory.
-#let project-heading(name, stack: "", project-url: "", body) = {
-  if project-url.len() != 0 { link(project-url)[*#name*] } else {
-    [*#name*] 
-  }
-  if stack != "" {
+#let project-heading(name, description, stack: "", project-url: "") = {
+  let title = if project-url.len() != 0 { link(project-url)[*#name*] } else { [*#name*] }
+  let stack-part = if stack != "" {
     [
       #show "|": sep => { h(0.3em); [|]; h(0.3em) }
       |*#stack*
     ]
   }
-  v(-0.2em)
-  if body != [] {
-    v(-0.4em)
-    set par(leading: 0.6em)
-    set list(indent: 0.5em)
-    body
-  }
+  list([#title #stack-part - #description])
 }
 
 // Pretty self-explanatory.
@@ -218,14 +210,12 @@
   assert(type(start-date) == datetime or type(start-date) == int)
   assert(type(end-date) == datetime or type(end-date) == int or type(end-date) == str)
 
-  generic_2x2(
-    (70%, 30%),
-    [*#institution*], [*#location*], 
-    [#degree, #major], period_worked(start-date, end-date)
+  grid(
+    columns: (1fr, auto),
+    align(left)[*#institution*, #degree, #major],
+    align(right)[#period_worked(start-date, end-date)],
   )
-  v(-0.2em)
   if body != [] {
-    v(-0.4em)
     set par(leading: 0.6em)
     set list(indent: 0.5em)
     body

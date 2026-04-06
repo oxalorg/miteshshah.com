@@ -1,6 +1,6 @@
 #import "resume.typ": *
 
-#let name = "Mitesh Shah"
+#let name = "Mitesh Shah (@oxalorg)"
 #let email = "mitesh@miteshshah.com"
 #let github = "oxalorg"
 #let personal-site = "miteshshah.com"
@@ -27,11 +27,11 @@
     2020,
     "Present"
   )[
-    - Working with Clojure, ClojureScript, Postgresql, XTDB, Reagent, & re-frame for Gaiwan and its clients
-    - Contributing to Lambda Island and all of its open source initiatives (eg: kaocha, ornament, reitit-jaatya etc)
-    - Major project stretching over a year was with Pitch and Zoom where I helped integrate their entire product with the new Zoom apps, and worked on multiple features for Pitch. Managed to grok their entire 350k+ LOC codebase and worked with their entire stack. Code changes included frontend, backend, oauth, database, and infrastructure. Worked closely with Pitch's co-founder and Zoom's engineers
-    - Actively mentoring juniors, pair-programming, and working with a team to distribute client work and ensure delivery of the right things in the right way
-    - Helping clients adopt Clojure best practices, creating idiomatic testing setups, improving codebase while delivering business solutions
+    - Worked as tech  & product lead for several fast paced startups and enterprise clients.
+    - *Zoom and it's child company Pitch*: Building out the oAuth integrations for their zoom apps platform, worked on a massive 350k+ LOC codebase. Worked closely with Pitch's co-founder and Zoom's engineers
+    - *Humble AI*: Created their entire product line of AI workflow execution engine (like n8n). Scaled it to over 100,000+ workflows and over *40M workflow executions*.
+    - *OpenTech.eco*: Built data pipelines and dashboards for their product GRID which sources energy data from buildings deployed across major cities in Canada and North America. The scale of this was importing data coming from over 1,000,000+ properties. I helped speed up this ETL process from 1.5 hours down to 8 minutes.
+	- *ITRevolution*: I tightly collaborated with *Gene Kim*, the author of The Phoenix Project,  to build an entire product line for them. We created a Bespoke video editing and rendering tool to allow editing of conference videos via the browser. Created a live streaming conference platform handling 1000s of concurrent users. I lead the development of all of these products from planning to delivery. I also got mentioned in his latest book *Vibe Coding* with Steve Yegge as I helped introduce Gene to AI/Agentic workflows.
   ]
 
   #work-heading(
@@ -41,8 +41,7 @@
     2021,
     2022
   )[
-    - Maintained the Clojurians Slack Log Archive for over a year (clojurians-log.clojureverse.org)
-    - Started working on a v2 of Clojurians archive with improved features and performance, and got funded for 3 months by Clojurists Together to work on it
+    - Got funded by ClojuristsTogether.org to work on enhancing Clojurians Slack Log (clojurians-log.clojureverse.org) which I have been maintining for multiple years.
   ]
 
   #work-heading(
@@ -52,8 +51,8 @@
     2018,
     2020
   )[
-    - Grew the company from 2 employees to over 15, from \$0 to \$150,000 ARR. Managed product, tech, sales, marketing, brand awareness, customer acquisition, and customer support
-    - Developed a production-ready Django e-Commerce platform built from scratch. Managed a team to build the entire platform including Front End design, Database Design, Back end development, Automated Rolling Deployment Using AWS, Ansible, Terraform, & Packer. Also launched and promoted Android & iOS Apps
+    - Grew the company from 2 employees to over 15, from \$0 to \$150,000 ARR. Managed product, tech, sales, marketing, brand awareness, customer acquisition for 20,000+ customers 
+    - Developed a production-ready Django e-Commerce platform built from scratch handling over 20,000 customers with intrictate rules based engine and automations for marketing. Also built Android apps for warehouse packers with rack optimisation algorithms, and an app for delivery boys solving route optimisation.
   ]
 
   #work-heading(
@@ -63,50 +62,42 @@
     2015,
     2018
   )[
-    - Working on in-house fintech products, creating MVPs to launch new B2C products
-    - Creating product roadmaps, testing out ideas, building MVPs, researching about potential markets
     - Working with several clients to build and maintain their E-commerce products, SaaS products, and other bespoke solutions
-    - Hands-on development with Python, Django, Wagtail, Postgresql, React, Webpack, React-Native
-    - Automating with Infra-as-code using Terraform, Packer, Ansible, AWS. Setting up CI/CD
+    - Hands-on development with Python, Django, Flask, Postgresql, React, React-Native. Automating with Infra-as-code using Terraform, Packer, Ansible, Fully automated CI/CD using Blue-Green deployments on AWS.
   ]
 ]
 
 #custom-title("FOSS Projects")[
   #project-heading(
-    "sakura",
-    stack: "CSS",
+    "sakura.css",
+    [(4,300+ stars on GitHub) A drop-in CSS framework which works with semantic html tags. Arguably one of the first projects to introduce this concept.],
     project-url: "https://github.com/oxalorg/sakura"
-  )[
-    - (Over 4,300 stars on GitHub) A drop-in CSS framework which works out of the box on your entire site without changing anything in existing HTML. Works directly on inbuilt HTML tags and is completely responsive. Supports duo-tone color customization
-  ]
+  )
 
   #project-heading(
     "4ever-clojure",
-    stack: "ClojureScript",
+    [(256+ stars on GitHub) Clojure exercies in the browser. After 4clojure shut down, created the de-facto alternative. Uses sci - the small Clojure interpreter],
     project-url: "https://4clojure.oxal.org"
-  )[
-    - Pure ClojureScript version of 4clojure, meant to run forever. After 4clojure shut down, created the de-facto alternative. Uses sci - the small Clojure interpreter
-  ]
+  )
+
+  #project-heading(
+    "10xdev",
+    [A monorepo for my personal hacking, from implementing research papers, to learning Erlang OTP, to image recognition on the rpi+hailo chip, to experimenting with dbus, everything is committed here.],
+    project-url: "https://codeberg.org/oxalorg/10xdev"
+  )
+
+  #project-heading(
+    "homelab",
+    [I self host 15+ services on my home server, including a local llm, and run a cluster of 7 different devices on the tailscale network]
+  )
 ]
 
 #custom-title("Education & Activities")[
-  #grid(
-    columns: (1fr, 1fr),
-    align(left)[*Mumbai University*],
-    align(right)[*2013 -- 2017*],
-    align(left)[B.E, Computer Engineering],
-    align(right)[]
-  )
-  #v(-0.2em)
-  #v(-0.4em)
-  #set list(indent: 0.5em)
+  #education-heading("Mumbai University", "", "B.E", "Computer Engineering", 2013, 2017)[
   - GPA: 8.03 out of 10.00
   - Developed an A.I. which uses human evolution and neural networks to learn and play games on its own. Simulations developed using Neuroevolution of augmenting topologies
-
-  #skills()[
-    - *YouTube:* Clojure, ClojureScript, & Emacs related programming videos (youtube.com/c/oxalorg)
-    - *Blog:* oxal.org/blog/
-    - *StackOverflow:* Ranked among the top 15% contributors overall
-    - *Communities:* Active member in Clojurians, Clojureverse, and several others
+  - *YouTube:* Clojure, ClojureScript, & Emacs related programming videos (#link("https://youtube.com/c/oxalorg")[youtube.com/c/oxalorg])
+  - *Blog:* #link("https://oxal.org/blog/")[oxal.org/blog/]
+  - *StackOverflow:* Ranked among the top 15% contributors overall
   ]
 ]
