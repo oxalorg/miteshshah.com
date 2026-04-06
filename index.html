@@ -393,18 +393,15 @@
       font-weight: 400;
     }
 
-    /* Blockquote cosmic styling */
     blockquote {
       border-left: 3px solid transparent;
       border-image: linear-gradient(180deg, #0d6b0d, var(--terminal), #2ecc2e) 1;
       font-style: italic;
-      color: #6a9a6a;
       position: relative;
       font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
       font-size: 0.9em;
     }
 
-    /* Terminal status bar */
     .status-bar {
       grid-column: 1 / -1;
       font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
@@ -628,11 +625,13 @@
 
     <p class="fade-in">I started working at <a href="https://gaiwan.co">Gaiwan</a> 6 years ago as a Founding Engineer. Experienced in system architecture, data driven design, high performance computing. Also have a great radar for detecting over engineering before it happens, and a keen eye to ensure the technology work being done stays true to the business objectives. We have helped multiple clients and their teams by coming in as experts or as a fractional CTO.</p>
 
-    <h4 class="fade-in">cat /dev/urandom</h4>
+    <h4 class="fade-in">tail -f hobbies.md</h4>
 
-    <p class="fade-in">In my free time, I enjoy playing real-time strategy games, cooking, hacking with sensors and Raspberry Pi's, setting up my homelab, and doing street photography! I also dabble with local hosted llms, been building PC's since 2013, linux gaming using CachyOS (arch btw, lol), and am a big proponent of self hosted stuff and using old hardware.</p>
+    <p class="fade-in">In my free time, I enjoy playing real-time strategy games, cooking, hacking with sensors and Raspberry Pi's, setting up my homelab, hosting local llms and fine tuning them, building PC's, looking at HDD and SSD prices rise and regret not buying them soon enough, linux gaming and tinkering with CachyOS (arch btw, lol), and doing street photography!</p>
 
-    <p class="fade-in">You'll find my desk full of random hardware and tech gizmos. <span class="help-easter-egg">HELP!!!</span></p>
+    <p class="fade-in">I love self hosting software and am reducing my dependency on the cloud day by day. I try to reuse and repurpose old hardware and am always on the lookout to grab them for cheap and find them a new home!</p>
+
+    <p class="fade-in">So naturally, you'll find my desk full of random hardware and tech gizmos. <span class="help-easter-egg">HELP!!!</span></p>
 
     <h4 class="fade-in">ls ~/talks | xargs imgcat</h4>
 
@@ -736,7 +735,7 @@
     <!-- </ul> -->
 
     <div class="debug-trigger" id="debug-trigger">
-      <span class="debug-prompt">$</span> <span class="debug-cmd">sudo enter_debug_mode</span><span class="debug-cursor">_</span>
+      <span class="debug-prompt">$</span> <span class="debug-cmd">sudo __debug_mode</span><span class="debug-cursor">_</span>
     </div>
   </aside>
 
