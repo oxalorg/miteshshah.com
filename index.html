@@ -2,9 +2,11 @@
 <!-- ---------------------------------------------------------
   "pshtt another template portfolio"...
   This is what you must be thinking. BUT DONT YOU DARE!
-  because this page was handcrafted by me using sakura.css :)
+  This page is handcrafted, laid out like the strategy game
+  manuals that got me into programming in the first place.
+  (sakura.css lives on at github.com/oxalorg/sakura)
   -------------------------------------------------------------- -->
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8" />
@@ -15,428 +17,811 @@
     content="Mitesh,shah,programming,computer,developer,software,coder,business,automation,open-source" />
   <meta name="author" content="Mitesh Shah" />
   <link href="/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="stylesheet" href="https://unpkg.com/normalize.css@7.0.0/normalize.css" type="text/css" />
-  <link rel="stylesheet" href="https://unpkg.com/sakura.css@1.3.1/css/sakura-ink.css" type="text/css" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@400;600&family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..500&display=swap"
+    rel="stylesheet" />
+
   <style>
     :root {
-      --terminal: #1a9e1a;
+      --paper: #f3eee3;
+      --paper-2: #e9e2d3;
+      --card: #fbf8f2;
+      --ink: #1b1813;
+      --ink-2: #4a443a;
+      --muted: #6f675a;
+      --rule: #d6ccb8;
+      --accent: #d9431c;
+      --accent-ink: #b5340f;
+      --cosmic: #4a2bd1;
+      --online: #1a9e1a;
+
+      --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+      --serif: "Newsreader", Georgia, "Times New Roman", serif;
+      --mono: "JetBrains Mono", "SF Mono", "Fira Code", ui-monospace, monospace;
+
+      --measure: 36rem;
     }
-    /* Override sakura-ink accent colors */
-    a {
-      color: var(--terminal);
+
+    /* sudo __debug_mode: the page drops back into its old terminal skin */
+    body.debug {
+      --paper: #070b07;
+      --paper-2: #0d150d;
+      --card: #0a120a;
+      --ink: #c9f0c9;
+      --ink-2: #9cc89c;
+      --muted: #5f8a5f;
+      --rule: #1d3a1d;
+      --accent: #33ff66;
+      --accent-ink: #33ff66;
+      --cosmic: #b388ff;
+      --serif: var(--mono);
     }
-    a:hover {
-      color: color-mix(in srgb, var(--terminal) 70%, white);
-    }
-    *,
-    h1 {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
-        Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
     body {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 20px;
-      display: grid;
-      grid-template-columns: 1fr 350px;
-      gap: 40px;
-      align-items: start;
-    }
-    .header-section {
-      grid-column: 1 / -1;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    main {
-      grid-column: 1;
-    }
-    aside {
-      grid-column: 2;
-      position: sticky;
-      top: 20px;
-      border-left: 2px solid rgba(26, 158, 26, 0.15);
-      padding-left: 24px;
-      background: linear-gradient(135deg, rgba(26, 158, 26, 0.03), rgba(26, 158, 26, 0.02));
-      border-radius: 0 8px 8px 0;
-      padding: 16px 20px 16px 24px;
-    }
-    aside a {
-      font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
-      font-size: 0.9em;
-    }
-    .profile-img {
-      max-width: 150px;
-      border-radius: 100%;
-      margin-bottom: 0px;
-    }
-    h1 {
-      margin-bottom: 0;
-      font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
-    }
-    /* Typing cursor after name */
-    .typed-name::after {
-      content: '_';
-      animation: cursorBlink 1s step-end infinite;
-      color: var(--terminal);
-      font-weight: 300;
-      margin-left: 2px;
-    }
-    @keyframes cursorBlink {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0; }
-    }
-    .tagline {
-      margin-top: 10px;
-    }
-
-    /* Section heading accents — terminal prompt style */
-    main h4 {
-      position: relative;
-      padding-left: 0;
-      margin-top: 2em;
-      letter-spacing: 0.3px;
-      font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
-    }
-    main h4::before {
-      content: '$ ';
-      color: var(--terminal);
-      font-weight: 400;
-      opacity: 0.7;
-    }
-
-    /* Staggered fade-in on page load */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(12px);
-      animation: fadeSlideIn 0.5s ease forwards;
-    }
-    .fade-in:nth-child(1) { animation-delay: 0s; }
-    .fade-in:nth-child(2) { animation-delay: 0.07s; }
-    .fade-in:nth-child(3) { animation-delay: 0.14s; }
-    .fade-in:nth-child(4) { animation-delay: 0.21s; }
-    .fade-in:nth-child(5) { animation-delay: 0.28s; }
-    .fade-in:nth-child(6) { animation-delay: 0.35s; }
-    .fade-in:nth-child(7) { animation-delay: 0.42s; }
-    .fade-in:nth-child(8) { animation-delay: 0.49s; }
-    .fade-in:nth-child(9) { animation-delay: 0.56s; }
-    .fade-in:nth-child(10) { animation-delay: 0.63s; }
-    .fade-in:nth-child(11) { animation-delay: 0.70s; }
-    .fade-in:nth-child(12) { animation-delay: 0.77s; }
-    .fade-in:nth-child(13) { animation-delay: 0.84s; }
-    .fade-in:nth-child(14) { animation-delay: 0.91s; }
-    .fade-in:nth-child(15) { animation-delay: 0.98s; }
-    @keyframes fadeSlideIn {
-      to { opacity: 1; transform: translateY(0); }
-    }
-
-    /* Profile image retro terminal */
-    .profile-wrap {
-      float: right;
-      padding-left: 16px;
-    }
-    .profile-wrap .terminal-frame {
-      background: #0a0a0a;
-      border: 1px solid #1a9e1a;
-      border-radius: 6px;
-      padding: 3px;
-      position: relative;
-      overflow: hidden;
-    }
-    .profile-wrap .terminal-frame::before {
-      content: '● ○ ○';
-      display: block;
-      font-size: 7px;
-      color: #1a9e1a;
-      padding: 3px 6px 2px;
-      letter-spacing: 2px;
-      opacity: 0.6;
-    }
-    .profile-wrap .terminal-frame::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(51, 255, 51, 0.03) 2px,
-        rgba(51, 255, 51, 0.03) 4px
-      );
-      pointer-events: none;
-      z-index: 1;
-    }
-    .profile-wrap img {
-      max-width: 130px;
-      display: block;
-      border-radius: 2px;
       margin: 0;
-      filter: grayscale(1) brightness(0.85) contrast(1.2);
-      mix-blend-mode: screen;
-      transition: filter 0.3s ease;
-    }
-    .profile-wrap .terminal-frame:hover img {
-      filter: grayscale(0.5) brightness(0.95) contrast(1.1);
-    }
-    .profile-wrap .terminal-frame:hover {
-      box-shadow: 0 0 12px rgba(51, 255, 51, 0.3), 0 0 30px rgba(51, 255, 51, 0.1);
-    }
-
-    .intergalactic-rogue {
-      position: relative;
-      background: linear-gradient(90deg, #0d6b0d, var(--terminal), #2ecc2e, var(--terminal), #0d6b0d);
-      background-size: 300% 100%;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-      animation: cosmicShift 4s ease-in-out infinite;
-      font-weight: 700;
-      text-decoration: none;
-      letter-spacing: 0.5px;
-    }
-    .intergalactic-rogue:hover {
-      animation: cosmicShift 1s ease-in-out infinite;
-      filter: drop-shadow(0 0 8px rgba(26, 158, 26, 0.6))
-             drop-shadow(0 0 20px rgba(26, 158, 26, 0.4));
-    }
-    .intergalactic-rogue::after {
-      content: '';
-      position: absolute;
-      bottom: -2px;
-      left: 0;
-      width: 0;
-      height: 2px;
-      background: linear-gradient(90deg, #0d6b0d, var(--terminal), #2ecc2e);
-      transition: width 0.4s ease;
-    }
-    .intergalactic-rogue:hover::after {
-      width: 100%;
-    }
-
-    /* Link hover transitions */
-    main a:not(.intergalactic-rogue):not(.talk-card) {
-      transition: color 0.2s ease;
-      text-decoration-color: rgba(26, 158, 26, 0.3);
-      text-underline-offset: 3px;
-    }
-    main a:not(.intergalactic-rogue):not(.talk-card):hover {
-      text-decoration-color: rgba(26, 158, 26, 0.8);
-    }
-
-    /* Social links monospace bar */
-    .social-bar {
-      font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
-      font-size: 0.88em;
-      letter-spacing: -0.3px;
-    }
-    .social-bar a {
-      transition: color 0.2s ease;
-    }
-
-    .talks-list {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 20px;
-    }
-    .talk-card {
-      display: block;
-      text-decoration: none;
-      border-radius: 10px;
-      overflow: hidden;
-      background: #0a1a0a;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-      color: inherit;
-    }
-    .talk-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(26, 158, 26, 0.25),
-                  0 4px 12px rgba(0, 0, 0, 0.3);
-    }
-    .talk-card .talk-thumb {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      object-fit: cover;
-      display: block;
-      margin: 0;
-      border-radius: 0;
-      transition: filter 0.3s ease;
-    }
-    .talk-card:hover .talk-thumb {
-      filter: brightness(1.1);
-    }
-    .talk-card .talk-info {
-      padding: 14px 16px;
-    }
-    .talk-card .talk-title {
-      font-size: 0.95em;
-      font-weight: 600;
-      line-height: 1.4;
-      margin: 0 0 6px 0;
-      color: #c0e0c0;
-    }
-    .talk-card .talk-meta {
-      font-size: 0.78em;
-      color: #6a9a6a;
-      margin: 0;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .talk-card .talk-meta .conf-dot {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #0d6b0d, var(--terminal));
-      flex-shrink: 0;
-    }
-    .talk-card .play-icon {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%) scale(0.9);
-      width: 48px;
-      height: 48px;
-      background: rgba(0, 0, 0, 0.7);
-      border: 1px solid rgba(26, 158, 26, 0.4);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      transition: opacity 0.25s ease, transform 0.25s ease;
-      backdrop-filter: blur(4px);
-    }
-    .talk-card .play-icon::after {
-      content: '';
-      display: block;
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 8px 0 8px 14px;
-      border-color: transparent transparent transparent var(--terminal);
-      margin-left: 3px;
-    }
-    .talk-card:hover .play-icon {
-      opacity: 1;
-      transform: translate(-50%, -50%) scale(1);
-    }
-    .talk-thumb-wrap {
-      position: relative;
-      overflow: hidden;
-    }
-
-    /* HELP!!! easter egg */
-    .help-easter-egg {
-      display: inline-block;
-      cursor: help;
-      transition: transform 0.15s ease;
-    }
-    .help-easter-egg:hover {
-      animation: helpShake 0.4s ease-in-out infinite;
-      color: #ff6ec7;
-    }
-    @keyframes helpShake {
-      0%, 100% { transform: rotate(0deg); }
-      25% { transform: rotate(-3deg); }
-      75% { transform: rotate(3deg); }
-    }
-
-    /* Tree-style sidebar list */
-    aside ul {
-      list-style: none;
-      padding-left: 0;
-      font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
-      font-size: 0.85em;
-      margin: 0.5em 0;
-    }
-    aside ul li {
-      padding: 0;
-      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--serif);
+      font-size: 1.25rem;
       line-height: 1.6;
-      position: relative;
-      padding-left: 20px;
-    }
-    aside ul li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: #555;
-    }
-    aside ul li::after {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 50%;
-      width: 14px;
-      height: 1px;
-      background: #555;
-    }
-    aside ul li:last-child::before {
-      bottom: 50%;
-    }
-    aside h4 {
-      font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
-      font-size: 0.95em;
-    }
-    aside h4::before {
-      content: '# ';
-      color: var(--terminal);
-      opacity: 0.5;
-      font-weight: 400;
+      font-optical-sizing: auto;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      transition: background-color 0.4s ease, color 0.4s ease;
     }
 
-    blockquote {
-      border-left: 3px solid transparent;
-      border-image: linear-gradient(180deg, #0d6b0d, var(--terminal), #2ecc2e) 1;
-      font-style: italic;
-      position: relative;
-      font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
-      font-size: 0.9em;
+    /* Paper grain */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.35;
+      background-image: radial-gradient(rgba(27, 24, 19, 0.08) 1px, transparent 1px);
+      background-size: 4px 4px;
+      z-index: 0;
+    }
+    body.debug::before {
+      background-image: repeating-linear-gradient(0deg, transparent 0 2px, rgba(51, 255, 51, 0.04) 2px 4px);
+      background-size: auto;
+      opacity: 1;
     }
 
-    .status-bar {
-      grid-column: 1 / -1;
-      font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
-      font-size: 0.75em;
-      color: #555;
-      border-top: 1px solid rgba(26, 158, 26, 0.1);
-      padding: 8px 0;
+    ::selection { background: var(--accent); color: var(--paper); }
+
+    a { color: inherit; }
+
+    p { margin: 0 0 1em; }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 1180px;
+      margin: 0 auto;
+      padding: 0 clamp(20px, 4vw, 48px);
+    }
+
+    .mono {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      letter-spacing: 0.02em;
+    }
+
+    .label {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--muted);
+    }
+
+    /* ---------- top strip ---------- */
+    .strip {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 2px solid var(--ink);
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--ink-2);
     }
-    .status-bar .status-left {
-      display: flex;
+    .strip a { text-decoration: none; }
+    .strip a:hover { color: var(--accent-ink); }
+    .online {
+      display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
     }
-    .status-bar .status-dot {
-      width: 6px;
-      height: 6px;
+    .dot {
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      background: var(--terminal);
-      animation: statusPulse 2s ease-in-out infinite;
+      background: var(--online);
+      box-shadow: 0 0 0 3px color-mix(in srgb, var(--online) 20%, transparent);
+      animation: pulse 2s ease-in-out infinite;
     }
-    @keyframes statusPulse {
-      0%, 100% { opacity: 0.4; }
+    @keyframes pulse {
+      0%, 100% { opacity: 0.5; }
       50% { opacity: 1; }
     }
 
-    /* Konami code glitch effect */
-    .glitch-mode {
-      animation: glitch 0.3s ease infinite;
+    /* ---------- cover ---------- */
+    .cover {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 340px;
+      gap: clamp(32px, 5vw, 72px);
+      align-items: end;
+      padding: clamp(48px, 8vw, 104px) 0 clamp(40px, 6vw, 72px);
     }
-    .glitch-mode * {
-      animation: textGlitch 0.1s ease infinite !important;
+    .cover .label { margin-bottom: 18px; }
+    .wordmark {
+      font-family: var(--display);
+      font-weight: 900;
+      font-stretch: 125%;
+      font-variation-settings: "wdth" 125;
+      font-size: clamp(3.4rem, 10.5vw, 9.2rem);
+      line-height: 0.86;
+      letter-spacing: -0.035em;
+      text-transform: uppercase;
+      margin: 0;
+      min-height: 1.72em;
     }
+    .wordmark span { display: block; }
+    .wordmark .surname { color: var(--accent); }
+    body.debug .wordmark { text-shadow: 0 0 18px rgba(51, 255, 51, 0.35); }
+
+    .tagline {
+      font-size: clamp(1.45rem, 2.6vw, 2.1rem);
+      line-height: 1.25;
+      max-width: 22em;
+      margin: 32px 0 0;
+      font-weight: 400;
+    }
+
+    .rogue {
+      position: relative;
+      font-style: italic;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      background: linear-gradient(90deg, var(--cosmic), var(--accent), var(--cosmic));
+      background-size: 200% 100%;
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: cosmicShift 5s ease-in-out infinite;
+      padding-right: 0.08em;
+    }
+    .rogue::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0.02em;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cosmic), var(--accent));
+      transform: scaleX(0.25);
+      transform-origin: left;
+      transition: transform 0.35s ease;
+    }
+    .rogue:hover::after { transform: scaleX(1); }
+    @keyframes cosmicShift {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    @keyframes starFade {
+      0% { opacity: 1; transform: translateY(0) scale(1); }
+      100% { opacity: 0; transform: translateY(-16px) scale(0.3); }
+    }
+
+    .cta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 36px;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+      padding: 12px 18px;
+      border: 2px solid var(--ink);
+      border-radius: 4px;
+      background: var(--card);
+      box-shadow: 4px 4px 0 var(--ink);
+      transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+    }
+    .btn:hover { transform: translate(-2px, -2px); box-shadow: 6px 6px 0 var(--ink); }
+    .btn:active { transform: translate(3px, 3px); box-shadow: 1px 1px 0 var(--ink); }
+    .btn.primary { background: var(--accent); color: #fff; }
+    body.debug .btn.primary { color: #041004; }
+
+    /* character card */
+    .char-card {
+      background: var(--card);
+      border: 2px solid var(--ink);
+      border-radius: 6px;
+      box-shadow: 8px 8px 0 var(--ink);
+      overflow: hidden;
+      transform: rotate(1.2deg);
+      transition: transform 0.3s ease;
+    }
+    .char-card:hover { transform: rotate(0deg); }
+    .char-card header {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px 14px;
+      border-bottom: 2px solid var(--ink);
+      background: var(--ink);
+      color: var(--paper);
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+    .portrait {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      border-bottom: 2px solid var(--ink);
+      overflow: hidden;
+      background: var(--paper-2);
+    }
+    .portrait img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      filter: grayscale(1) contrast(1.1);
+      transition: filter 0.4s ease, transform 0.6s ease;
+    }
+    .char-card:hover .portrait img { filter: grayscale(0.15) contrast(1.05); transform: scale(1.03); }
+    body.debug .portrait img { filter: grayscale(1) brightness(0.8) sepia(1) hue-rotate(60deg) saturate(3); }
+    .portrait::after {
+      content: 'P1';
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 1rem;
+      padding: 2px 8px;
+      background: var(--accent);
+      color: #fff;
+      border: 2px solid var(--ink);
+      border-radius: 3px;
+    }
+    .stats {
+      margin: 0;
+      padding: 6px 14px 10px;
+    }
+    .stats div {
+      display: grid;
+      grid-template-columns: 76px 1fr;
+      gap: 10px;
+      padding: 7px 0;
+      border-bottom: 1px dashed var(--rule);
+      font-size: 1rem;
+      line-height: 1.35;
+    }
+    .stats div:last-child { border-bottom: 0; }
+    .stats dt {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted);
+      padding-top: 3px;
+    }
+    .stats dd { margin: 0; }
+
+    /* ---------- table of contents ---------- */
+    .contents {
+      border-top: 2px solid var(--ink);
+      border-bottom: 2px solid var(--ink);
+      padding: 28px 0 32px;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 24px;
+    }
+    .contents ol {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      columns: 2;
+      column-gap: 48px;
+    }
+    .contents li { break-inside: avoid; }
+    .contents a {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      padding: 6px 0;
+      text-decoration: none;
+      font-size: 1.1rem;
+    }
+    .contents a .n {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent-ink);
+      font-weight: 600;
+    }
+    .contents a .leader {
+      flex: 1;
+      border-bottom: 2px dotted var(--rule);
+      transform: translateY(-5px);
+    }
+    .contents a .what {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+    .contents a:hover .t { color: var(--accent-ink); }
+    .contents a:hover .leader { border-color: var(--accent); }
+
+    /* ---------- chapters ---------- */
+    .chapter {
+      display: grid;
+      grid-template-columns: 260px minmax(0, 1fr);
+      gap: clamp(24px, 4vw, 64px);
+      padding: clamp(56px, 8vw, 96px) 0;
+      border-bottom: 1px solid var(--rule);
+      scroll-margin-top: 16px;
+    }
+    .chapter-head { position: relative; }
+    .chapter-head .sticky { position: sticky; top: 32px; }
+    .chapter-num {
+      font-family: var(--display);
+      font-weight: 900;
+      font-stretch: 125%;
+      font-variation-settings: "wdth" 125;
+      font-size: 5.5rem;
+      line-height: 0.8;
+      color: transparent;
+      -webkit-text-stroke: 2px var(--ink);
+      letter-spacing: -0.04em;
+    }
+    .chapter h2 {
+      font-family: var(--display);
+      font-weight: 800;
+      font-stretch: 112%;
+      font-variation-settings: "wdth" 112;
+      font-size: 1.9rem;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      text-transform: uppercase;
+      margin: 18px 0 10px;
+    }
+    .chapter .cmd {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+    .chapter .cmd::before { content: '$ '; color: var(--accent-ink); }
+
+    .prose { max-width: var(--measure); }
+    .prose a {
+      text-decoration-color: color-mix(in srgb, var(--accent) 55%, transparent);
+      text-decoration-thickness: 2px;
+      text-underline-offset: 4px;
+      transition: color 0.15s ease, text-decoration-color 0.15s ease;
+    }
+    .prose a:hover { color: var(--accent-ink); text-decoration-color: var(--accent); }
+    .lede { font-size: 1.5rem; line-height: 1.45; }
+    .dropcap::first-letter {
+      float: left;
+      font-family: var(--display);
+      font-weight: 900;
+      font-size: 4.6em;
+      line-height: 0.82;
+      padding: 0.08em 0.1em 0 0;
+      color: var(--accent);
+    }
+
+    /* margin notes */
+    .with-notes {
+      display: grid;
+      grid-template-columns: minmax(0, var(--measure)) minmax(0, 220px);
+      gap: 40px;
+      align-items: start;
+    }
+    .note {
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      line-height: 1.55;
+      color: var(--ink-2);
+      border-left: 3px solid var(--accent);
+      padding: 4px 0 4px 14px;
+    }
+    .note b { display: block; color: var(--ink); margin-bottom: 4px; }
+
+    /* abilities */
+    .abilities {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 14px;
+      margin: 36px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .ability {
+      background: var(--card);
+      border: 2px solid var(--ink);
+      border-radius: 6px;
+      padding: 14px 16px 16px;
+      font-size: 1.05rem;
+      line-height: 1.35;
+    }
+    .ability .label { display: block; margin-bottom: 8px; }
+    .ability.special {
+      background: var(--ink);
+      color: var(--paper);
+      grid-column: span 2;
+    }
+    .ability.special .label { color: var(--accent); }
+    body.debug .ability.special { background: var(--accent); color: #041004; }
+    body.debug .ability.special .label { color: #041004; }
+
+    /* quest log */
+    .quests {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      position: relative;
+      max-width: 46rem;
+    }
+    .quests::before {
+      content: '';
+      position: absolute;
+      left: 79px;
+      top: 10px;
+      bottom: 10px;
+      border-left: 2px dashed var(--rule);
+    }
+    .quest {
+      display: grid;
+      grid-template-columns: 64px 32px minmax(0, 1fr);
+      gap: 0 0;
+      padding: 0 0 40px;
+      position: relative;
+    }
+    .quest:last-child { padding-bottom: 0; }
+    .quest .year {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 1.15rem;
+      padding-top: 3px;
+      text-align: right;
+      padding-right: 2px;
+    }
+    .quest .pin {
+      width: 16px;
+      height: 16px;
+      margin: 8px 0 0 8px;
+      border: 2px solid var(--ink);
+      background: var(--paper);
+      transform: rotate(45deg);
+      position: relative;
+      z-index: 1;
+    }
+    .quest.done .pin { background: var(--accent); }
+    .quest .body { padding-left: 16px; }
+    .quest h3 {
+      font-family: var(--display);
+      font-weight: 800;
+      font-stretch: 105%;
+      font-size: 1.35rem;
+      line-height: 1.2;
+      margin: 0 0 8px;
+    }
+    .quest h3 a { text-decoration: none; border-bottom: 2px solid var(--accent); }
+    .quest h3 a:hover { color: var(--accent-ink); }
+    .quest .status {
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+    .quest p { margin: 0; }
+    .loot {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 14px 0 0;
+      padding: 0;
+      list-style: none;
+    }
+    .loot li {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border: 1.5px solid var(--ink);
+      border-radius: 999px;
+      background: var(--card);
+    }
+
+    /* talks */
+    .talks {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .talk {
+      display: block;
+      text-decoration: none;
+      background: var(--card);
+      border: 2px solid var(--ink);
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 6px 6px 0 var(--ink);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .talk:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--accent); }
+    .talk .thumb {
+      position: relative;
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+      border-bottom: 2px solid var(--ink);
+    }
+    .talk img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .talk:hover img { transform: scale(1.04); }
+    .talk .play {
+      position: absolute;
+      left: 14px;
+      bottom: 14px;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      padding: 6px 10px;
+      background: var(--ink);
+      color: var(--paper);
+      border-radius: 3px;
+    }
+    .talk:hover .play { background: var(--accent); color: #fff; }
+    .talk .info { padding: 16px 18px 18px; }
+    .talk h3 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1.2rem;
+      line-height: 1.25;
+      margin: 0 0 8px;
+    }
+
+    /* open source tiles */
+    .tiles {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 32px;
+    }
+    .tile {
+      display: block;
+      text-decoration: none;
+      padding: 22px 22px 20px;
+      border: 2px solid var(--ink);
+      border-radius: 6px;
+      background: var(--card);
+      transition: background 0.2s ease, color 0.2s ease;
+    }
+    .tile:hover { background: var(--ink); color: var(--paper); }
+    .tile .big {
+      display: block;
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 1.35rem;
+      margin: 8px 0 6px;
+    }
+    .tile .go {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--accent-ink);
+    }
+    .tile:hover .go { color: var(--accent); }
+
+    /* inventory */
+    .inventory {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0;
+      margin: 0 0 40px;
+      padding: 0;
+      list-style: none;
+      border: 2px solid var(--ink);
+      border-radius: 6px;
+      overflow: hidden;
+      background: var(--card);
+    }
+    .item {
+      padding: 18px 18px 20px;
+      border-right: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+      font-size: 1.05rem;
+      line-height: 1.4;
+      transition: background 0.15s ease;
+    }
+    .item:nth-child(3n) { border-right: 0; }
+    .item:nth-last-child(-n + 3) { border-bottom: 0; }
+    .item:hover { background: var(--paper-2); }
+    .item .slot {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .item .rarity { font-family: var(--mono); font-size: 0.68rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; }
+    .r-legendary { color: #b36b00; }
+    .r-epic { color: #7a3bd1; }
+    .r-rare { color: #1f6fd1; }
+    .r-cursed { color: #c0261b; }
+    .r-common { color: var(--muted); }
+    body.debug .item .rarity { color: var(--accent); }
+    .item small { display: block; color: var(--muted); font-size: 0.85rem; margin-top: 4px; }
+
+    .help {
+      display: inline-block;
+      font-family: var(--display);
+      font-weight: 900;
+      color: var(--accent-ink);
+      cursor: help;
+    }
+    .help:hover { animation: helpShake 0.35s ease-in-out infinite; }
+    @keyframes helpShake {
+      0%, 100% { transform: rotate(0deg); }
+      25% { transform: rotate(-4deg); }
+      75% { transform: rotate(4deg); }
+    }
+
+    /* multiplayer */
+    .featured {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      text-decoration: none;
+      padding: 26px 28px;
+      background: var(--accent);
+      color: #fff;
+      border: 2px solid var(--ink);
+      border-radius: 6px;
+      box-shadow: 6px 6px 0 var(--ink);
+      margin-bottom: 28px;
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+    }
+    body.debug .featured { color: #041004; }
+    .featured:hover { transform: translate(-3px, -3px); box-shadow: 9px 9px 0 var(--ink); }
+    .featured .label { color: inherit; opacity: 0.85; }
+    .featured strong {
+      display: block;
+      font-family: var(--display);
+      font-weight: 900;
+      font-stretch: 115%;
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      line-height: 1;
+      margin-top: 8px;
+    }
+    .featured .arrow { font-family: var(--display); font-size: 2.4rem; font-weight: 900; }
+
+    .links {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      column-gap: 40px;
+    }
+    .links a {
+      display: grid;
+      grid-template-columns: 120px 1fr auto;
+      align-items: baseline;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid var(--rule);
+      text-decoration: none;
+    }
+    .links .k { font-family: var(--mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); }
+    .links .v { font-size: 1.1rem; overflow-wrap: anywhere; }
+    .links .arr { font-family: var(--mono); color: var(--accent-ink); transition: transform 0.15s ease; }
+    .links a:hover .v { color: var(--accent-ink); }
+    .links a:hover .arr { transform: translateX(4px); }
+
+    /* loading screen tip */
+    .tip {
+      margin: clamp(56px, 8vw, 96px) 0;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 24px;
+      align-items: start;
+    }
+    .tip blockquote {
+      margin: 0;
+      font-size: clamp(1.6rem, 3.2vw, 2.4rem);
+      line-height: 1.25;
+      font-style: italic;
+      max-width: 24em;
+    }
+    .tip cite {
+      display: block;
+      margin-top: 14px;
+      font-style: normal;
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+    .loadbar {
+      height: 10px;
+      border: 2px solid var(--ink);
+      border-radius: 2px;
+      margin-top: 28px;
+      max-width: 420px;
+      overflow: hidden;
+    }
+    .loadbar i {
+      display: block;
+      height: 100%;
+      width: 0;
+      background: repeating-linear-gradient(90deg, var(--accent) 0 10px, transparent 10px 14px);
+      transition: width 2.4s steps(24);
+    }
+    .tip.in .loadbar i { width: 100%; }
+
+    /* footer */
+    footer {
+      border-top: 2px solid var(--ink);
+      padding: 18px 0 40px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--ink-2);
+    }
+    .debug-trigger {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--muted);
+      background: none;
+      border: 1.5px dashed var(--rule);
+      border-radius: 4px;
+      padding: 8px 12px;
+      cursor: pointer;
+      user-select: none;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+    .debug-trigger:hover { color: var(--online); border-color: var(--online); }
+    .debug-trigger.active { color: #ff3333; border-color: #ff3333; }
+    .debug-cursor { animation: blink 1s step-end infinite; }
+    @keyframes blink { 50% { opacity: 0; } }
+
+    /* reveal on scroll */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.in { opacity: 1; transform: none; }
+    .no-js .reveal { opacity: 1; transform: none; }
+
+    /* glitch.js + konami hooks */
+    .glitch-mode { animation: glitch 0.3s ease infinite; }
+    .glitch-mode * { animation: textGlitch 0.1s ease infinite !important; }
     @keyframes glitch {
       0% { filter: none; }
       20% { filter: hue-rotate(90deg); }
@@ -452,363 +837,369 @@
       75% { transform: skewX(1deg); }
       100% { transform: none; }
     }
-
-    /* Debug mode trigger in sidebar */
-    .debug-trigger {
-      margin-top: 2em;
-      padding: 8px 12px;
-      font-family: "SF Mono", "Fira Code", "Fira Mono", "Roboto Mono", monospace;
-      font-size: 0.8em;
-      color: #444;
-      border: 1px dashed #333;
-      border-radius: 4px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      user-select: none;
-      position: relative;
-      overflow: hidden;
-    }
-    .debug-trigger:hover {
-      color: var(--terminal);
-      border-color: var(--terminal);
-      background: rgba(26, 158, 26, 0.05);
-      box-shadow: 0 0 8px rgba(26, 158, 26, 0.15);
-    }
-    .debug-trigger:active {
-      transform: scale(0.98);
-    }
-    .debug-prompt {
-      color: #555;
-      transition: color 0.3s ease;
-    }
-    .debug-trigger:hover .debug-prompt {
-      color: var(--terminal);
-    }
-    .debug-cmd {
-      transition: color 0.3s ease;
-    }
-    .debug-cursor {
-      animation: cursorBlink 1s step-end infinite;
-      color: #555;
-      transition: color 0.3s ease;
-    }
-    .debug-trigger:hover .debug-cursor {
-      color: var(--terminal);
-    }
-    .debug-trigger.active {
-      color: #ff3333;
-      border-color: #ff3333;
-      background: rgba(255, 51, 51, 0.05);
-      box-shadow: 0 0 12px rgba(255, 51, 51, 0.2);
-    }
-
-    /* WebGL glitch: CRT boot power-on */
-    .crt-boot {
-      clip-path: inset(49.5% 0);
-      animation: crtPowerOn 0.4s ease-out forwards;
-    }
-    @keyframes crtPowerOn {
-      0%   { clip-path: inset(49.5% 0); filter: brightness(2); }
-      30%  { clip-path: inset(20% 0); filter: brightness(1.5); }
-      100% { clip-path: inset(0% 0); filter: brightness(1); }
-    }
-    /* Ambient: micro RGB split */
-    .glitch-rgb {
-      animation: rgbSplit 0.1s ease;
-    }
+    .glitch-rgb { animation: rgbSplit 0.1s ease; }
     @keyframes rgbSplit {
-      0%   { filter: none; }
-      25%  { filter: drop-shadow(-2px 0 0 rgba(255,0,0,0.3))
-                    drop-shadow(2px 0 0 rgba(0,255,0,0.3)); }
-      50%  { filter: drop-shadow(1px 0 0 rgba(0,0,255,0.3))
-                    drop-shadow(-1px 0 0 rgba(255,0,0,0.3)); }
-      100% { filter: none; }
+      25% { filter: drop-shadow(-2px 0 0 rgba(255,0,0,0.35)) drop-shadow(2px 0 0 rgba(0,255,0,0.35)); }
+      50% { filter: drop-shadow(1px 0 0 rgba(0,0,255,0.35)) drop-shadow(-1px 0 0 rgba(255,0,0,0.35)); }
     }
-    /* Ambient: color invert flash */
-    .glitch-invert {
-      animation: invertFlash 0.06s steps(1);
-    }
-    @keyframes invertFlash {
-      0%, 100% { filter: none; }
-      50% { filter: invert(1) hue-rotate(180deg); }
-    }
-    /* Ambient: skew distortion */
-    .glitch-skew {
-      animation: skewGlitch 0.12s ease;
-    }
+    .glitch-invert { animation: invertFlash 0.06s steps(1); }
+    @keyframes invertFlash { 50% { filter: invert(1) hue-rotate(180deg); } }
+    .glitch-skew { animation: skewGlitch 0.12s ease; }
     @keyframes skewGlitch {
-      0%, 100% { transform: none; }
       30% { transform: skewX(-2deg) translateX(3px); }
       60% { transform: skewX(1deg) translateX(-2px); }
     }
 
-    /* Subtle scanline overlay */
-    body::after {
-      content: '';
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      pointer-events: none;
-      background: repeating-linear-gradient(
-        0deg,
-        transparent,
-        transparent 2px,
-        rgba(0, 0, 0, 0.015) 2px,
-        rgba(0, 0, 0, 0.015) 4px
-      );
-      z-index: 9999;
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation: none !important; transition: none !important; }
+      .reveal { opacity: 1; transform: none; }
+      html { scroll-behavior: auto; }
     }
 
-    @keyframes cosmicShift {
-      0%, 100% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
+    /* ---------- responsive ---------- */
+    @media (max-width: 960px) {
+      .cover { grid-template-columns: 1fr; align-items: start; }
+      .char-card { max-width: 360px; transform: none; }
+      .chapter { grid-template-columns: 1fr; gap: 28px; }
+      .chapter-head .sticky { position: static; display: flex; align-items: end; gap: 20px; flex-wrap: wrap; }
+      .chapter-num { font-size: 4rem; }
+      .chapter h2 { margin: 0; }
+      .chapter .cmd { flex-basis: 100%; }
+      .with-notes { grid-template-columns: 1fr; gap: 20px; }
+      .contents, .tip { grid-template-columns: 1fr; gap: 12px; }
     }
-    @media (max-width: 768px) {
-      body {
-        grid-template-columns: 1fr;
-        gap: 20px;
-      }
-      main {
-        grid-column: 1;
-      }
-      aside {
-        grid-column: 1;
-        position: static;
-        border-left: none;
-        border-top: 2px solid rgba(26, 158, 26, 0.15);
-        border-radius: 0 0 8px 8px;
-        padding: 16px 20px;
-      }
-      .header-section {
-        flex-direction: column-reverse;
-        text-align: center;
-      }
-      blockquote {
-        grid-column: 1;
-      }
-      .talks-list {
-        grid-template-columns: 1fr;
-      }
-      .status-bar {
-        grid-column: 1;
-        flex-direction: column;
-        gap: 4px;
-        text-align: center;
-      }
+    @media (max-width: 680px) {
+      body { font-size: 1.15rem; }
+      .lede { font-size: 1.3rem; }
+      .strip .hide-sm { display: none; }
+      .contents ol { columns: 1; }
+      .talks, .tiles, .links { grid-template-columns: 1fr; }
+      .inventory { grid-template-columns: 1fr 1fr; }
+      .item:nth-child(3n) { border-right: 1px solid var(--rule); }
+      .item:nth-child(2n) { border-right: 0; }
+      .item:nth-last-child(-n + 3) { border-bottom: 1px solid var(--rule); }
+      .item:nth-last-child(-n + 1) { border-bottom: 0; }
+      .links a { grid-template-columns: 100px 1fr auto; }
+      .portrait { aspect-ratio: 4 / 3; }
+      .portrait img { object-position: center 35%; }
+      .abilities { grid-template-columns: 1fr 1fr; gap: 10px; }
+      .ability { font-size: 1rem; padding: 12px; }
+      .ability.special { grid-column: 1 / -1; }
+      .featured { padding: 20px; }
+    }
+    @media (max-width: 340px) {
+      .inventory { grid-template-columns: 1fr; }
+      .item { border-right: 0 !important; border-bottom: 1px solid var(--rule) !important; }
+      .item:last-child { border-bottom: 0 !important; }
     }
   </style>
 </head>
 
-<body>
-  <main>
-    <h1 class="fade-in typed-name" data-scramble="Mitesh Shah"></h1>
-    <div class="profile-wrap fade-in">
-      <div class="terminal-frame">
-        <img src="static/mks.jpg" alt="Mitesh Shah Profile Picture">
+<body class="no-js">
+  <div class="wrap">
+
+    <div class="strip">
+      <span>MITESH SHAH <span class="hide-sm">· Player's Manual · Mumbai → World</span></span>
+      <a class="online" href="mailto:mitesh@miteshshah.com"><span class="dot"></span> online · mitesh@miteshshah.com</a>
+    </div>
+
+    <!-- ===================== COVER ===================== -->
+    <header class="cover">
+      <div>
+        <div class="label">Press start · Player 1</div>
+        <h1 class="wordmark" aria-label="Mitesh Shah">
+          <span data-scramble="Mitesh">Mitesh</span>
+          <span class="surname" data-scramble="Shah">Shah</span>
+        </h1>
+        <p class="tagline">
+          Computer programmer by day,
+          <a href="https://oxal.org" class="rogue">Intergalactic Rogue</a>
+          by night.
+        </p>
+        <div class="cta">
+          <a class="btn primary" href="mailto:mitesh@miteshshah.com">✉ Send a message</a>
+          <a class="btn" href="https://oxal.org/blog/">Read the blog →</a>
+        </div>
       </div>
-    </div>
-    <p class="fade-in">
-      I am a Computer programmer by day,
-      <a href="https://oxal.org" class="intergalactic-rogue">Intergalactic Rogue</a>
-      by night.
-    </p>
 
-    <h4 class="fade-in">cat origin.txt</h4>
+      <aside class="char-card" aria-label="Character card">
+        <header><span>Character</span><span>oxalorg</span></header>
+        <div class="portrait"><img src="static/mks.jpg" alt="Mitesh Shah"></div>
+        <dl class="stats">
+          <div><dt>Class</dt><dd>Full-stack developer · Fractional CTO</dd></div>
+          <div><dt>Guild</dt><dd>Founding Engineer at <a href="https://gaiwan.co">Gaiwan</a></dd></div>
+          <div><dt>Base</dt><dd>Mumbai → world</dd></div>
+          <div><dt>Uptime</dt><dd>since 199X</dd></div>
+        </dl>
+      </aside>
+    </header>
 
-    <p class="fade-in">My story began with an unhealthy addiction to video games. As a young 13 year old boy I got gifted a PC, this was very rare back then in Mumbai/India. A privilege I will never forget. I would spend all my day fidgeting with Windows, and playing strategy and mmorpg games. Soon my brain latched onto automating level ups in these games and soon enough I found myself learning scripting and programming to hack them. From that moment on I knew what my career would be :)</p>
+    <!-- ===================== CONTENTS ===================== -->
+    <nav class="contents" aria-label="Contents">
+      <div class="label">Contents</div>
+      <ol>
+        <li><a href="#origin"><span class="n">01</span><span class="t">Origin story</span><span class="leader"></span><span class="what">cat origin.txt</span></a></li>
+        <li><a href="#main-quest"><span class="n">02</span><span class="t">Main quest</span><span class="leader"></span><span class="what">career</span></a></li>
+        <li><a href="#side-quests"><span class="n">03</span><span class="t">Side quests</span><span class="leader"></span><span class="what">2018, 2020, …</span></a></li>
+        <li><a href="#cutscenes"><span class="n">04</span><span class="t">Cutscenes</span><span class="leader"></span><span class="what">talks</span></a></li>
+        <li><a href="#open-source"><span class="n">05</span><span class="t">Open source &amp; broadcasts</span><span class="leader"></span><span class="what">code, video</span></a></li>
+        <li><a href="#inventory"><span class="n">06</span><span class="t">Inventory</span><span class="leader"></span><span class="what">hobbies</span></a></li>
+        <li><a href="#multiplayer"><span class="n">07</span><span class="t">Multiplayer</span><span class="leader"></span><span class="what">find me</span></a></li>
+      </ol>
+    </nav>
 
-    <h4 class="fade-in">systemctl status career</h4>
-
-    <p class="fade-in">Now I work as a full-stack developer, fractional CTO, software &amp; product consultant helping startups and small to medium-sized companies figure out their product, their users, and help them with their technology stack.</p>
-
-    <p class="fade-in">I started working at <a href="https://gaiwan.co">Gaiwan</a> 6 years ago as a Founding Engineer. Experienced in system architecture, data driven design, high performance computing. Also have a great radar for detecting over engineering before it happens, and a keen eye to ensure the technology work being done stays true to the business objectives. We have helped multiple clients and their teams by coming in as experts or as a fractional CTO.</p>
-
-    <h4 class="fade-in">tail -f hobbies.md</h4>
-
-    <p class="fade-in">In my free time, I enjoy playing real-time strategy games, cooking, hacking with sensors and Raspberry Pi's, setting up my homelab, hosting local llms and fine tuning them, building PC's, looking at HDD and SSD prices rise and regret not buying them soon enough, linux gaming and tinkering with CachyOS (arch btw, lol), and doing street photography!</p>
-
-    <p class="fade-in">I love self hosting software and am reducing my dependency on the cloud day by day. I try to reuse and repurpose old hardware and am always on the lookout to grab them for cheap and find them a new home!</p>
-
-    <p class="fade-in">So naturally, you'll find my desk full of random hardware and tech gizmos. <span class="help-easter-egg">HELP!!!</span></p>
-
-    <h4 class="fade-in">ls ~/talks | xargs imgcat</h4>
-
-    <div class="talks-list fade-in">
-      <a href="https://www.youtube.com/watch?v=J1qZiFQ_ibs" target="_blank" class="talk-card">
-        <div class="talk-thumb-wrap">
-          <img src="static/main1.jpeg" alt="Beyond the Hype talk" class="talk-thumb">
-          <div class="play-icon"></div>
+    <main>
+      <!-- 01 ORIGIN -->
+      <section class="chapter" id="origin">
+        <div class="chapter-head"><div class="sticky">
+          <div class="chapter-num">01</div>
+          <h2>Origin story</h2>
+          <div class="cmd">cat origin.txt</div>
+        </div></div>
+        <div class="with-notes reveal">
+          <div class="prose">
+            <p class="lede dropcap">My story began with an unhealthy addiction to video games. As a young 13 year old boy I got gifted a PC, this was very rare back then in Mumbai/India. A privilege I will never forget.</p>
+            <p>I would spend all my day fidgeting with Windows, and playing strategy and MMORPG games. Soon my brain latched onto automating level ups in these games and soon enough I found myself learning scripting and programming to hack them.</p>
+            <p>From that moment on I knew what my career would be :)</p>
+          </div>
+          <div class="note">
+            <b>Achievement unlocked</b>
+            Age 13: first PC.<br>
+            Then: scripting my way through level ups.
+          </div>
         </div>
-        <div class="talk-info">
-          <p class="talk-title">Beyond the Hype: Obstacles on the Path to Clojure Adoption</p>
-          <p class="talk-meta"><span class="conf-dot"></span> Heart of Clojure, Belgium 2024</p>
+      </section>
+
+      <!-- 02 MAIN QUEST -->
+      <section class="chapter" id="main-quest">
+        <div class="chapter-head"><div class="sticky">
+          <div class="chapter-num">02</div>
+          <h2>Main quest</h2>
+          <div class="cmd">systemctl status career</div>
+        </div></div>
+        <div class="reveal">
+          <div class="prose">
+            <p class="lede">Now I work as a full-stack developer, fractional CTO, software &amp; product consultant helping startups and small to medium-sized companies figure out their product, their users, and help them with their technology stack.</p>
+            <p>I started working at <a href="https://gaiwan.co">Gaiwan</a> 6 years ago as a Founding Engineer. We have helped multiple clients and their teams by coming in as experts or as a fractional CTO.</p>
+          </div>
+          <ul class="abilities" aria-label="Abilities">
+            <li class="ability"><span class="label">Skill</span>System architecture</li>
+            <li class="ability"><span class="label">Skill</span>Data driven design</li>
+            <li class="ability"><span class="label">Skill</span>High performance computing</li>
+            <li class="ability"><span class="label">Skill</span>Keeps the tech work true to the business objectives</li>
+            <li class="ability special"><span class="label">★ Passive ability · Over-engineering radar</span>Detects over engineering before it happens.</li>
+          </ul>
         </div>
-      </a>
-      <a href="https://www.youtube.com/watch?v=KL2g2bkPwsc" target="_blank" class="talk-card">
-        <div class="talk-thumb-wrap">
-          <img src="static/main2.jpg" alt="Ornament talk" class="talk-thumb">
-          <div class="play-icon"></div>
+      </section>
+
+      <!-- 03 SIDE QUESTS -->
+      <section class="chapter" id="side-quests">
+        <div class="chapter-head"><div class="sticky">
+          <div class="chapter-num">03</div>
+          <h2>Side quests</h2>
+          <div class="cmd">find / -name "side-quests"</div>
+        </div></div>
+        <ol class="quests reveal">
+          <li class="quest done">
+            <div class="year">2020</div><div class="pin"></div>
+            <div class="body">
+              <h3>Covid Critical, with a team from Yale University</h3>
+              <p>Developed the Covid Critical application for the Government of New Haven, Connecticut.</p>
+            </div>
+          </li>
+          <li class="quest done">
+            <div class="year">2018</div><div class="pin"></div>
+            <div class="body">
+              <h3>Co-founded <a href="https://www.taazakitchen.com">Taaza Kitchen</a> as CTO</h3>
+              <p>Left my job to build an eGrocery platform. I, along with a team under me, developed and designed the entire platform from scratch.</p>
+              <ul class="loot">
+                <li>~$150K ARR</li>
+                <li>2 → 15+ employees</li>
+                <li>countless contractors</li>
+              </ul>
+            </div>
+          </li>
+          <li class="quest done">
+            <div class="year">14+</div><div class="pin"></div>
+            <div class="body">
+              <h3>Micro internet businesses</h3>
+              <p>Launched several of them, starting when I was 14 years old. Most notably:</p>
+              <ul class="loot">
+                <li>a graphic design studio</li>
+                <li>a web development studio</li>
+                <li>a marketplace for trading digital games</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <!-- 04 CUTSCENES -->
+      <section class="chapter" id="cutscenes">
+        <div class="chapter-head"><div class="sticky">
+          <div class="chapter-num">04</div>
+          <h2>Cutscenes</h2>
+          <div class="cmd">ls ~/talks | xargs imgcat</div>
+        </div></div>
+        <div class="talks reveal">
+          <a class="talk" href="https://www.youtube.com/watch?v=J1qZiFQ_ibs" target="_blank" rel="noopener">
+            <div class="thumb"><img src="static/main1.jpeg" alt="Mitesh on stage at Heart of Clojure"><span class="play">▶ PLAY</span></div>
+            <div class="info">
+              <h3>Beyond the Hype: Obstacles on the Path to Clojure Adoption</h3>
+              <span class="label">Heart of Clojure · Belgium 2024</span>
+            </div>
+          </a>
+          <a class="talk" href="https://www.youtube.com/watch?v=KL2g2bkPwsc" target="_blank" rel="noopener">
+            <div class="thumb"><img src="static/main2.jpg" alt="Ornament talk"><span class="play">▶ PLAY</span></div>
+            <div class="info">
+              <h3>Ornament: CSS and Styled Components in Clojure &amp; ClojureScript</h3>
+              <span class="label">Heart of Clojure · Belgium 2024</span>
+            </div>
+          </a>
         </div>
-        <div class="talk-info">
-          <p class="talk-title">Ornament: CSS and Styled Components in Clojure &amp; ClojureScript</p>
-          <p class="talk-meta"><span class="conf-dot"></span> Heart of Clojure, Belgium 2024</p>
+      </section>
+
+      <!-- 05 OPEN SOURCE -->
+      <section class="chapter" id="open-source">
+        <div class="chapter-head"><div class="sticky">
+          <div class="chapter-num">05</div>
+          <h2>Open source &amp; broadcasts</h2>
+          <div class="cmd">chmod 777 code</div>
+        </div></div>
+        <div class="reveal">
+          <div class="prose">
+            <p class="lede">I spend a lot of time using, building, and contributing to Open Source Software. I was also recently funded by ClojuristsTogether to work on one of my projects.</p>
+            <p>I also create YouTube videos about Emacs, Vim, Clojure, and ClojureScript.</p>
+          </div>
+          <div class="tiles">
+            <a class="tile" href="https://github.com/oxalorg">
+              <span class="label">Source code</span>
+              <span class="big">github.com/oxalorg</span>
+              <span class="go">browse repos →</span>
+            </a>
+            <a class="tile" href="https://www.youtube.com/channel/UCd588hDu4bszrSHlLXC8eZA">
+              <span class="label">Broadcasts · youtube-dl --upload</span>
+              <span class="big">YouTube channel</span>
+              <span class="go">Emacs · Vim · Clojure · ClojureScript →</span>
+            </a>
+          </div>
         </div>
-      </a>
-    </div>
+      </section>
 
-    <h4 class="fade-in">chmod 777 code</h4>
+      <!-- 06 INVENTORY -->
+      <section class="chapter" id="inventory">
+        <div class="chapter-head"><div class="sticky">
+          <div class="chapter-num">06</div>
+          <h2>Inventory</h2>
+          <div class="cmd">tail -f hobbies.md</div>
+        </div></div>
+        <div class="reveal">
+          <p class="prose">In my free time, I enjoy:</p>
+          <ul class="inventory">
+            <li class="item"><div class="slot"><span class="rarity r-legendary">Legendary</span></div>Real-time strategy games</li>
+            <li class="item"><div class="slot"><span class="rarity r-rare">Rare</span></div>Cooking</li>
+            <li class="item"><div class="slot"><span class="rarity r-epic">Epic</span></div>Hacking with sensors &amp; Raspberry Pi's</li>
+            <li class="item"><div class="slot"><span class="rarity r-epic">Epic</span></div>Setting up my homelab</li>
+            <li class="item"><div class="slot"><span class="rarity r-legendary">Legendary</span></div>Hosting local LLMs and fine tuning them</li>
+            <li class="item"><div class="slot"><span class="rarity r-rare">Rare</span></div>Building PC's</li>
+            <li class="item"><div class="slot"><span class="rarity r-cursed">Cursed</span></div>Watching HDD &amp; SSD prices rise<small>and regretting not buying them soon enough</small></li>
+            <li class="item"><div class="slot"><span class="rarity r-epic">Epic</span></div>Linux gaming &amp; tinkering with CachyOS<small>(arch btw, lol)</small></li>
+            <li class="item"><div class="slot"><span class="rarity r-rare">Rare</span></div>Street photography</li>
+          </ul>
+          <div class="prose">
+            <p>I love self hosting software and am reducing my dependency on the cloud day by day. I try to reuse and repurpose old hardware and am always on the lookout to grab them for cheap and find them a new home!</p>
+            <p>So naturally, you'll find my desk full of random hardware and tech gizmos. <span class="help help-easter-egg">HELP!!!</span></p>
+          </div>
+        </div>
+      </section>
 
-    <p class="fade-in">I spend a lot of time using, building, and contributing to Open Source Software. I was also recently funded by ClojuristsTogether to work on one my projects.</p>
+      <!-- 07 MULTIPLAYER -->
+      <section class="chapter" id="multiplayer">
+        <div class="chapter-head"><div class="sticky">
+          <div class="chapter-num">07</div>
+          <h2>Multiplayer</h2>
+          <div class="cmd">ping oxalorg</div>
+        </div></div>
+        <div class="reveal">
+          <a class="featured" href="https://oxal.org/blog/">
+            <span>
+              <span class="label">My internet name is oxalorg, and I keep my blog quite active!</span>
+              <strong>oxal.org/blog</strong>
+            </span>
+            <span class="arrow">→</span>
+          </a>
+          <ul class="links">
+            <li><a href="mailto:mitesh@miteshshah.com"><span class="k">Email</span><span class="v">mitesh@miteshshah.com</span><span class="arr">→</span></a></li>
+            <li><a href="https://www.linkedin.com/in/mitesh-shah"><span class="k">LinkedIn</span><span class="v">in/mitesh-shah</span><span class="arr">→</span></a></li>
+            <li><a href="https://github.com/oxalorg"><span class="k">GitHub</span><span class="v">oxalorg</span><span class="arr">→</span></a></li>
+            <li><a href="https://codeberg.org/oxalorg"><span class="k">Codeberg</span><span class="v">oxalorg</span><span class="arr">→</span></a></li>
+            <li><a href="https://fosstodon.org/@oxalorg"><span class="k">Mastodon</span><span class="v">@oxalorg@fosstodon.org</span><span class="arr">→</span></a></li>
+            <li><a href="https://twitter.com/@oxalorg"><span class="k">Twitter</span><span class="v">@oxalorg</span><span class="arr">→</span></a></li>
+            <li><a href="https://www.youtube.com/c/oxalorg"><span class="k">YouTube</span><span class="v">c/oxalorg</span><span class="arr">→</span></a></li>
+            <li><a href="https://stackoverflow.com/users/4395646/oxalorg"><span class="k">StackOverflow</span><span class="v">oxalorg</span><span class="arr">→</span></a></li>
+          </ul>
+        </div>
+      </section>
+    </main>
 
-    <p class="fade-in">My GitHub account: <a href="https://github.com/oxalorg">github.com/oxalorg</a></p>
+    <!-- loading screen tip -->
+    <section class="tip reveal" aria-label="Quote">
+      <div class="label">Loading tip</div>
+      <div>
+        <blockquote>
+          “Waste no more time arguing what a good man should be. Be one.”
+          <cite>— Marcus Aurelius</cite>
+        </blockquote>
+        <div class="loadbar"><i></i></div>
+      </div>
+    </section>
 
-    <h4 class="fade-in">youtube-dl --upload</h4>
-
-    <p class="fade-in">I create youtube videos about Emacs, Vim, Clojure, and ClojureScript.
-      Check out my <a href="https://www.youtube.com/channel/UCd588hDu4bszrSHlLXC8eZA">YouTube Channel here</a>.</p>
-
-    <h4 class="fade-in">find / -name "side-quests"</h4>
-
-    <p>In 2020, I worked with a team from Yale University to develop a Covid Critical application  which was developed for the Government of New Haven, Connecticut.</p>
-
-    <p>
-      In 2018, I left my job and co-founded (as the CTO) <a href="https://www.taazakitchen.com">Taaza Kitchen</a> &mdash;
-      an eGrocery platform, where I along with a team under me developed and designed the entire
-      platform from scratch. We grew the company to ~$150K ARR from 2 employees to over 15 and countless contractors.
-    </p>
-
-    <p>
-      Before that, I launched several micro internet businesses since I was 14 years old.
-      Most notably &mdash; A graphic design studio,
-      a web development studio, and a marketplace for trading digital games.
-    </p>
-  </main>
-
-  <aside>
-    <h4>My blog</h4>
-    <p>
-      My internet name is oxalorg, and I keep my blog 
-<a href="https://oxal.org/blog/">oxal.org/blog</a> quite active!
-    </p>
-
-    <h4>My web presence</h4>
-    <p class="social-bar">
-      [
-      <a href="mailto:mitesh@miteshshah.com">email</a> /
-      <a href="https://www.linkedin.com/in/mitesh-shah">linkedin</a> /
-      <a href="https://fosstodon.org/@oxalorg">mastodon</a> /
-      <a href="https://twitter.com/@oxalorg">twitter</a>
-      ]
-    </p>
-
-    <ul>
-      <li>
-	<a href="https://github.com/oxalorg">github.com/oxalorg</a>
-      </li>
-      <li>
-	<a href="https://codeberg.org/oxalorg">codeberg.org/oxalorg</a>
-      </li>
-      <!-- <li> -->
-	<!--   My technical blog: -->
-	<!--   <a href="https://computableverse.com">computableverse.com</a> -->
-	<!-- </li> -->
-      <li>
-	<a href="https://www.youtube.com/c/oxalorg">youtube.com/c/oxalorg</a>
-      </li>
-      <li><a href="https://stackoverflow.com/users/4395646/oxalorg">stackoverflow</a></li>
-    </ul>
-
-
-    <!-- <h4>Fun Stuff</h4> -->
-    <!-- <ul style="list-style: none; padding-left: 0px;"> -->
-    <!--   <li>Cooks 2 minute noodles in 3 minutes</li> -->
-    <!--   <li>First used a computer sometime in the early 2000's</li> -->
-    <!--   <li> -->
-    <!-- 	Been playing Age of Empires since <sup><small>saveme</small></sup> -->
-    <!--   </li> -->
-    <!--   <li>My favourite DotA heros: Furion the Natures Prophet, Pudge the -->
-    <!-- 	Butcher, Mirana the Priestess of the Moon, & Tinker the Dr. -->
-    <!-- 	Clinker!</li> -->
-    <!-- </ul> -->
-
-    <div class="debug-trigger" id="debug-trigger">
-      <span class="debug-prompt">$</span> <span class="debug-cmd">sudo __debug_mode</span><span class="debug-cursor">_</span>
-    </div>
-  </aside>
-
-  <!-- <h3>My Random Blogs</h3> -->
-  <!-- <p>I have a bad habbit of buying domains and doing nothing with them. Here is a list of those domains:</p> -->
-  <!-- <ul style="list-style: none; padding-left: 0px;"> -->
-  <!--   <li><a href="https://oxal.org">oxal.org</a></li> -->
-  <!--   <li><a href="https://www.burnyourcode.com/">BurnYourCode.com</a></li> -->
-  <!--   <li><a href="http://earthlyhumans.com/">EarthlyHumans.com</a></li> -->
-  <!--   <li><a href="https://owlofathena.com/">OwlOfAthena.com</a></li> -->
-  <!--   <li><a href="https://jholify.com">Jholify.com</a></li> -->
-  <!--   <li>...more money to be wasted soon!</li> -->
-  <!-- </ul> -->
-
-  <blockquote>"Waste no more time arguing what a good man should be. Be one" - Marcus Aurelius</blockquote>
-
-  <div class="status-bar">
-    <span class="status-left"><span class="status-dot"></span> mitesh@miteshshah.com</span>
-    <span>uptime: since 199X | loc: mumbai -> world</span>
+    <footer>
+      <span class="online"><span class="dot"></span> mitesh@miteshshah.com</span>
+      <span>uptime: since 199X | loc: mumbai -> world</span>
+      <button class="debug-trigger" id="debug-trigger" type="button">
+        <span class="debug-prompt">$</span> <span class="debug-cmd">sudo __debug_mode</span><span class="debug-cursor">_</span>
+      </button>
+    </footer>
   </div>
 
   <script>
-    // Scramble/decode text effect
+    document.body.classList.remove('no-js');
+
+    // Scramble/decode effect on the wordmark
     (() => {
-      const el = document.querySelector('[data-scramble]');
-      const finalText = el.dataset.scramble;
-      const chars = '!@#$%^&*()_+-=[]{}|;:,.<>?/~`0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz';
-      const totalDuration = 1200;
-      const staggerPerChar = totalDuration / finalText.length;
-      const scrambleCycles = 6;
-      let resolved = 0;
-      const startDelay = 300;
-
-      // Start with random chars
-      el.textContent = finalText.split('').map(c =>
-        c === ' ' ? ' ' : chars[Math.floor(Math.random() * chars.length)]
-      ).join('');
-
-      setTimeout(() => {
-        const interval = setInterval(() => {
-          el.textContent = finalText.split('').map((c, i) => {
-            if (c === ' ') return ' ';
-            if (i < resolved) return c;
-            return chars[Math.floor(Math.random() * chars.length)];
-          }).join('');
-        }, 40);
-
-        finalText.split('').forEach((c, i) => {
-          if (c === ' ') return;
-          setTimeout(() => {
-            resolved = Math.max(resolved, i + 1);
-            if (i === finalText.length - 1) {
-              clearInterval(interval);
-              el.textContent = finalText;
-            }
-          }, i * staggerPerChar + Math.random() * staggerPerChar * 0.5);
-        });
-      }, startDelay);
+      if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      const chars = '!@#$%^&*<>?/0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+      const rand = () => chars[Math.floor(Math.random() * chars.length)];
+      document.querySelectorAll('[data-scramble]').forEach((el, row) => {
+        const finalText = el.dataset.scramble;
+        let resolved = 0;
+        el.textContent = finalText.replace(/\S/g, rand);
+        setTimeout(() => {
+          const interval = setInterval(() => {
+            el.textContent = [...finalText].map((c, i) => (i < resolved || c === ' ') ? c : rand()).join('');
+            if (resolved >= finalText.length) { clearInterval(interval); el.textContent = finalText; }
+          }, 40);
+          const step = 900 / finalText.length;
+          [...finalText].forEach((_, i) => setTimeout(() => { resolved = Math.max(resolved, i + 1); }, (i + 1) * step));
+        }, 250 + row * 250);
+      });
     })();
 
-    const rogue = document.querySelector('.intergalactic-rogue');
+    // Star trail on the Intergalactic Rogue link
+    const rogue = document.querySelector('.rogue');
     rogue.addEventListener('mousemove', (e) => {
       const rect = rogue.getBoundingClientRect();
-      const x = e.clientX - rect.left + (Math.random() - 0.5) * 20;
-      const y = e.clientY - rect.top + (Math.random() - 0.5) * 10;
       const star = document.createElement('span');
-      star.textContent = ['*', '.', '+'][Math.floor(Math.random() * 3)];
+      star.textContent = ['*', '.', '+', '✦'][Math.floor(Math.random() * 4)];
       star.style.cssText = `
         position: absolute;
-        left: ${x}px;
-        top: ${y}px;
+        left: ${e.clientX - rect.left + (Math.random() - 0.5) * 20}px;
+        top: ${e.clientY - rect.top + (Math.random() - 0.5) * 10}px;
         pointer-events: none;
-        font-size: ${6 + Math.random() * 8}px;
-        color: hsl(${220 + Math.random() * 140}, 80%, 75%);
+        font-style: normal;
+        font-size: ${8 + Math.random() * 10}px;
+        -webkit-text-fill-color: hsl(${220 + Math.random() * 140}, 80%, 55%);
         animation: starFade 0.8s ease-out forwards;
         z-index: 10;
       `;
@@ -816,18 +1207,21 @@
       setTimeout(() => star.remove(), 800);
     });
 
-    const styleSheet = document.createElement('style');
-    styleSheet.textContent = `
-      @keyframes starFade {
-        0% { opacity: 1; transform: translateY(0) scale(1); }
-        100% { opacity: 0; transform: translateY(-15px) scale(0.3); }
-      }
-    `;
-    document.head.appendChild(styleSheet);
+    // Reveal chapters as they scroll in
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.12 });
+    document.querySelectorAll('.reveal').forEach((el) => io.observe(el));
+
+    // Debug mode: swap into the old green terminal skin (glitch.js runs the effect)
+    document.getElementById('debug-trigger').addEventListener('click', () => {
+      document.body.classList.toggle('debug');
+    });
 
     // Konami Code: up up down down left right left right b a
-    const termColor = getComputedStyle(document.documentElement).getPropertyValue('--terminal').trim();
-    const konamiCode = [38,38,40,40,37,39,37,39,66,65];
+    const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
     let konamiIndex = 0;
     document.addEventListener('keydown', (e) => {
       if (e.keyCode === konamiCode[konamiIndex]) {
@@ -838,13 +1232,12 @@
           const msg = document.createElement('div');
           msg.style.cssText = `
             position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
-            font-family: "SF Mono", "Fira Code", monospace; font-size: 1.5em;
-            color: ${termColor}; background: rgba(0,0,0,0.9); padding: 24px 40px;
-            border: 1px solid ${termColor}; border-radius: 8px; z-index: 99999;
-            text-align: center; line-height: 1.8;
-            box-shadow: 0 0 30px rgba(59, 34, 234, 0.3), inset 0 0 30px rgba(59, 34, 234, 0.05);
+            font-family: "JetBrains Mono", monospace; font-size: 1.5em;
+            color: #33ff66; background: rgba(0,0,0,0.92); padding: 24px 40px;
+            border: 2px solid #33ff66; border-radius: 6px; z-index: 99999;
+            text-align: center; line-height: 1.8; box-shadow: 8px 8px 0 #d9431c;
           `;
-          msg.innerHTML = `> ACCESS GRANTED<br><span style="font-size:0.7em;color:#888;">you found the easter egg. hire me?</span>`;
+          msg.innerHTML = `> ACCESS GRANTED<br><span style="font-size:0.7em;color:#aaa;">you found the easter egg. hire me?</span>`;
           document.body.appendChild(msg);
           setTimeout(() => {
             document.body.classList.remove('glitch-mode');
@@ -857,9 +1250,9 @@
     });
 
     // Console easter egg for fellow devs
-    console.log('%c> whoami', `color: ${termColor}; font-size: 14px; font-family: monospace;`);
+    console.log('%c> whoami', 'color: #d9431c; font-size: 14px; font-family: monospace;');
     console.log('%cMitesh Shah — hacker, builder, intergalactic rogue', 'color: #b388ff; font-size: 12px; font-family: monospace;');
-    console.log('%c> cat /etc/motd', `color: ${termColor}; font-size: 14px; font-family: monospace;`);
+    console.log('%c> cat /etc/motd', 'color: #d9431c; font-size: 14px; font-family: monospace;');
     console.log('%cYou\'re reading my console logs? We should definitely be friends.\nTry the Konami Code on this page ;)', 'color: #888; font-size: 11px; font-family: monospace;');
   </script>
   <script src="glitch.js"></script>
